@@ -1,6 +1,12 @@
 (function () {
   "use strict";
 
+  // Belt-and-braces: the inline <head> script sets this before first paint;
+  // this covers pages that don't include it (e.g. privacy.html).
+  document.documentElement.classList.add("js");
+
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   // Mobile nav toggle
   var nav = document.querySelector(".global-nav");
   var toggle = document.querySelector(".nav-toggle");
@@ -17,26 +23,65 @@
     });
   }
 
-  // Subtle scroll reveal (respects prefers-reduced-motion via CSS)
-  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // Nav hairline/shadow once the page is scrolled
+  if (nav) {
+    var scrollTicking = false;
+    var updateNav = function () {
+      nav.classList.toggle("is-scrolled", window.scrollY > 4);
+      scrollTicking = false;
+    };
+    window.addEventListener("scroll", function () {
+      if (!scrollTicking) {
+        scrollTicking = true;
+        window.requestAnimationFrame(updateNav);
+      }
+    }, { passive: true });
+    updateNav();
+  }
+
+  // Count-up for the Spenzia figures (₹18,240 and 62%).
+  // The HTML ships with the final numbers, so no-JS and reduced-motion
+  // visitors always see the real values; we only animate from zero when
+  // motion is allowed.
+  function countUp(el) {
+    var target = parseInt(el.getAttribute("data-count"), 10);
+    if (isNaN(target)) return;
+    var duration = 950;
+    var start = null;
+    function frame(now) {
+      if (start === null) start = now;
+      var t = Math.min((now - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
+      el.textContent = Math.round(target * eased).toLocaleString("en-IN");
+      if (t < 1) window.requestAnimationFrame(frame);
+    }
+    window.requestAnimationFrame(frame);
+  }
+
+  // Scroll-triggered reveals — one observer drives the section reveal,
+  // child stagger (CSS transition delays), the budget-ring sweep (CSS),
+  // and the number count-ups (JS).
+  var revealTargets = document.querySelectorAll("[data-reveal]");
   if ("IntersectionObserver" in window && !reduceMotion) {
-    var revealTargets = document.querySelectorAll("[data-reveal]");
+    // Prime counters at zero so the count-up has somewhere to go.
+    document.querySelectorAll("[data-count]").forEach(function (el) {
+      el.textContent = "0";
+    });
     var io = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
             entry.target.classList.add("is-visible");
+            entry.target.querySelectorAll("[data-count]").forEach(countUp);
             io.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.15, rootMargin: "0px 0px -6% 0px" }
     );
     revealTargets.forEach(function (el) { io.observe(el); });
   } else {
-    document.querySelectorAll("[data-reveal]").forEach(function (el) {
-      el.classList.add("is-visible");
-    });
+    revealTargets.forEach(function (el) { el.classList.add("is-visible"); });
   }
 
   // Waitlist / contact form — front-end only.
@@ -51,14 +96,23 @@
       var email = input ? input.value.trim() : "";
       var isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
+      function showStatus(message, isError) {
+        if (!status) return;
+        status.textContent = message;
+        status.classList.add("is-shown");
+        status.classList.toggle("is-error", !!isError);
+      }
+
       if (!isValid) {
-        if (status) status.textContent = "Please enter a valid email address.";
+        showStatus("Please enter a valid email address.", true);
         return;
       }
 
-      if (status) {
-        status.textContent = "Thanks — you're on the list. We'll email you at launch.";
-      }
+      showStatus("Thanks — you're on the list. We'll email you at launch.", false);
+      form.classList.remove("is-success");
+      // Restart the success pop if it's submitted twice.
+      void form.offsetWidth;
+      form.classList.add("is-success");
       form.reset();
     });
   });

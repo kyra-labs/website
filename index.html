@@ -45,6 +45,7 @@
     rel="stylesheet"
   />
   <link rel="stylesheet" href="/assets/css/style.css" />
+  <script>document.documentElement.classList.add("js");</script>
 
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -134,22 +135,30 @@
 
   <main id="main">
     <!-- Hero -->
-    <section class="tile tile--parchment">
+    <!-- Signature element: the wordmark's dot-scatter, rebuilt as a live SVG
+         constellation. On load the dots "sprinkle" down and settle with a
+         slight overshoot (staggered, heaviest dots landing first), then
+         drift/breathe very gently at rest. This is the one place the motion
+         budget is spent boldly — everything else on the page shares a single,
+         quieter reveal language. See REDESIGN-NOTES.md. -->
+    <section class="tile tile--parchment hero">
       <div class="container tile-stack">
         <div class="hero-motif" aria-hidden="true">
-          <svg viewBox="0 0 420 220" xmlns="http://www.w3.org/2000/svg">
-            <circle class="motif-dot" cx="260" cy="40" r="9" opacity="0.9"/>
-            <circle class="motif-dot" cx="308" cy="62" r="6" opacity="0.75"/>
-            <circle class="motif-dot" cx="216" cy="66" r="6" opacity="0.75"/>
-            <circle class="motif-dot" cx="278" cy="92" r="12" opacity="0.85"/>
-            <circle class="motif-dot" cx="178" cy="100" r="5" opacity="0.6"/>
-            <circle class="motif-dot" cx="236" cy="122" r="8" opacity="0.7"/>
-            <circle class="motif-dot" cx="300" cy="128" r="4.5" opacity="0.55"/>
-            <circle class="motif-dot" cx="150" cy="140" r="4" opacity="0.4"/>
+          <svg viewBox="0 0 320 150" xmlns="http://www.w3.org/2000/svg">
+            <g class="motif-dot-g" style="--d:.05s"><circle class="motif-dot" style="--fd:6.1s;--fdel:1.25s" cx="202" cy="36" r="11" opacity="0.92"/></g>
+            <g class="motif-dot-g" style="--d:.1s"><circle class="motif-dot" style="--fd:7.2s;--fdel:1.3s" cx="194" cy="84" r="9" opacity="0.85"/></g>
+            <g class="motif-dot-g" style="--d:.12s"><circle class="motif-dot" style="--fd:5.2s;--fdel:1.32s" cx="164" cy="50" r="7" opacity="0.8"/></g>
+            <g class="motif-dot-g" style="--d:.16s"><circle class="motif-dot" style="--fd:5.4s;--fdel:1.36s" cx="236" cy="58" r="6" opacity="0.72"/></g>
+            <g class="motif-dot-g" style="--d:.18s"><circle class="motif-dot" style="--fd:5.9s;--fdel:1.38s" cx="116" cy="72" r="6.5" opacity="0.65"/></g>
+            <g class="motif-dot-g" style="--d:.22s"><circle class="motif-dot" style="--fd:6.6s;--fdel:1.42s" cx="268" cy="44" r="5" opacity="0.6"/></g>
+            <g class="motif-dot-g" style="--d:.26s"><circle class="motif-dot" style="--fd:5.6s;--fdel:1.46s" cx="84" cy="90" r="5" opacity="0.55"/></g>
+            <g class="motif-dot-g" style="--d:.3s"><circle class="motif-dot" style="--fd:6.8s;--fdel:1.5s" cx="148" cy="94" r="8" opacity="0.7"/></g>
+            <g class="motif-dot-g" style="--d:.34s"><circle class="motif-dot" style="--fd:6.4s;--fdel:1.54s" cx="58" cy="116" r="4" opacity="0.45"/></g>
+            <g class="motif-dot-g" style="--d:.38s"><circle class="motif-dot" style="--fd:5s;--fdel:1.58s" cx="250" cy="92" r="4.5" opacity="0.5"/></g>
           </svg>
         </div>
         <span class="eyebrow">Independent app studio</span>
-        <h1 class="hero-display">Real problems.<br />Real apps. One developer.</h1>
+        <h1 class="hero-display"><span class="hero-line">Real problems<span class="hero-dot">.</span></span><br /><span class="hero-line">Real apps<span class="hero-dot">.</span> One developer<span class="hero-dot">.</span></span></h1>
         <p class="lead">Kyra Labs designs and builds practical apps for things people actually deal with every day — not another feature-bloated platform. Currently in the workshop: Spenzia, an expense tracker.</p>
         <div class="btn-row">
           <a class="btn btn--primary btn--lg" href="#spenzia">See what's next</a>
@@ -215,11 +224,19 @@
           <div class="phone-frame">
             <div class="phone-frame__notch"></div>
             <div class="phone-frame__screen">
-              <div>
-                <div class="mock-balance-label">Spent this month</div>
-                <div class="mock-balance">₹18,240</div>
+              <div class="mock-top">
+                <div>
+                  <div class="mock-balance-label">Spent this month</div>
+                  <div class="mock-balance">₹<span data-count="18240">18,240</span></div>
+                </div>
+                <div class="mock-ring" aria-hidden="true">
+                  <svg viewBox="0 0 48 48">
+                    <circle class="ring-track" cx="24" cy="24" r="22" fill="none" stroke-width="4.5"/>
+                    <circle class="ring-fg" cx="24" cy="24" r="22" fill="none" stroke-width="4.5" transform="rotate(-90 24 24)"/>
+                  </svg>
+                </div>
               </div>
-              <span class="mock-chip">● 62% of budget used</span>
+              <span class="mock-chip">● <span data-count="62">62</span>% of budget used</span>
               <div class="mock-row">
                 <div>
                   <div class="mock-row__label">Groceries</div>
@@ -252,7 +269,7 @@
               <li><span class="check">✓</span>Charts and spending insights at a glance</li>
               <li><span class="check">✓</span>Reminders for recurring bills</li>
             </ul>
-            <div class="btn-row" style="justify-content: flex-start;">
+            <div class="btn-row btn-row--start">
               <a class="btn btn--primary" href="https://spenzia.kyralabs.dev/">Visit Spenzia</a>
               <a class="btn btn--ghost--on-dark" href="https://spenzia.kyralabs.dev/#waitlist">Get notified</a>
             </div>
@@ -292,8 +309,8 @@
           <button class="btn btn--primary" type="submit">Notify me</button>
         </form>
         <div class="form-status" data-form-status role="status" aria-live="polite"></div>
-        <p class="waitlist-note">Prefer email? Write to <a class="text-link" href="mailto:contact@kyralabs.dev" style="color: var(--color-primary-on-dark);">contact@kyralabs.dev</a>.</p>
-        <p class="waitlist-note">Follow along on <a class="text-link" href="https://www.instagram.com/kyra__labs/" target="_blank" rel="noopener" style="color: var(--color-primary-on-dark);">Instagram</a> or <a class="text-link" href="https://github.com/kyra-labs" target="_blank" rel="noopener" style="color: var(--color-primary-on-dark);">GitHub</a>.</p>
+        <p class="waitlist-note">Prefer email? Write to <a class="text-link" href="mailto:contact@kyralabs.dev">contact@kyralabs.dev</a>.</p>
+        <p class="waitlist-note">Follow along on <a class="text-link" href="https://www.instagram.com/kyra__labs/" target="_blank" rel="noopener">Instagram</a> or <a class="text-link" href="https://github.com/kyra-labs" target="_blank" rel="noopener">GitHub</a>.</p>
       </div>
     </section>
   </main>
