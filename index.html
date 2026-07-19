@@ -4,18 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kyra Labs — Independent App Studio Building Everyday Apps</title>
-  <meta name="description" content="Kyra Labs is an independent, one-person app studio designing practical, privacy-conscious apps for everyday life. Currently building Spenzia, an expense tracker — coming soon." />
+  <meta name="description" content="Kyra Labs is an independent, one-person app studio designing practical, privacy-conscious apps for everyday life. Currently building Spenzia, an expense tracker — in development." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://kyralabs.dev/" />
   <meta name="theme-color" content="#1e1d1f" />
   <meta name="author" content="Kyra Labs" />
-  <meta name="keywords" content="Kyra Labs, indie app studio, independent developer, Android apps, Kotlin developer, Jetpack Compose apps, Spenzia expense tracker, everyday productivity apps" />
+  <meta name="keywords" content="Kyra Labs, cross-platform apps, indie app studio, independent developer, expense tracker app, Spenzia, everyday productivity apps" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Kyra Labs" />
   <meta property="og:title" content="Kyra Labs — Independent App Studio Building Everyday Apps" />
-  <meta property="og:description" content="A one-person studio designing practical, privacy-conscious apps for everyday life. Currently building Spenzia, an expense tracker — coming soon." />
+  <meta property="og:description" content="A one-person studio designing practical, privacy-conscious apps for everyday life. Currently building Spenzia, an expense tracker — in development." />
   <meta property="og:url" content="https://kyralabs.dev/" />
   <meta property="og:image" content="https://kyralabs.dev/assets/img/og-image.png" />
   <meta property="og:image:width" content="1200" />
@@ -29,17 +29,19 @@
   <meta name="twitter:image" content="https://kyralabs.dev/assets/img/og-image.png" />
 
   <!-- Icons / PWA -->
-  <link rel="icon" href="/assets/img/favicon.ico" sizes="any" />
-  <link rel="icon" href="/assets/img/favicon-32.png" type="image/png" sizes="32x32" />
-  <link rel="icon" href="/assets/img/favicon-16.png" type="image/png" sizes="16x16" />
-  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="Kyra Labs" />
   <link rel="manifest" href="/site.webmanifest" />
 
   <!-- Fonts -->
+  <link rel="preload" href="/assets/fonts/GoogleSansRounded.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&display=swap"
     rel="stylesheet"
   />
   <link rel="stylesheet" href="/assets/css/style.css" />
@@ -49,16 +51,32 @@
   {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": "https://kyralabs.dev/#organization",
     "name": "Kyra Labs",
     "url": "https://kyralabs.dev/",
-    "logo": "https://kyralabs.dev/assets/img/icon-512.png",
+    "logo": "https://kyralabs.dev/web-app-manifest-512x512.png",
     "description": "Kyra Labs is an independent, one-person app studio building practical, privacy-conscious apps for everyday life.",
-    "founder": {
-      "@type": "Person",
-      "name": "YamTee"
-    },
+    "founder": { "@id": "https://kyralabs.dev/#mohammed-thalha" },
     "sameAs": [
-      "https://www.yamtee.online/"
+      "https://github.com/kyra-labs",
+      "https://www.instagram.com/kyra__labs/"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://kyralabs.dev/#mohammed-thalha",
+    "name": "Mohammed Thalha",
+    "alternateName": "YamTee",
+    "url": "https://yamtee.dev",
+    "jobTitle": "Founder & Developer",
+    "worksFor": { "@id": "https://kyralabs.dev/#organization" },
+    "sameAs": [
+      "https://yamtee.dev",
+      "https://github.com/kyra-labs",
+      "https://www.instagram.com/kyra__labs/"
     ]
   }
   </script>
@@ -67,7 +85,8 @@
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Kyra Labs",
-    "url": "https://kyralabs.dev/"
+    "url": "https://kyralabs.dev/",
+    "publisher": { "@id": "https://kyralabs.dev/#organization" }
   }
   </script>
   <script type="application/ld+json">
@@ -76,7 +95,7 @@
     "@type": "SoftwareApplication",
     "name": "Spenzia",
     "applicationCategory": "FinanceApplication",
-    "operatingSystem": "Android",
+    "operatingSystem": "Web, Android, iOS, Linux, Windows",
     "url": "https://spenzia.kyralabs.dev/",
     "publisher": {
       "@type": "Organization",
@@ -88,7 +107,7 @@
       "price": "0",
       "priceCurrency": "INR"
     },
-    "description": "Spenzia is an upcoming expense tracker with budgets, categories, and spending insights, built with Kotlin and Jetpack Compose."
+    "description": "Spenzia is an upcoming open-source, cross-platform expense tracker with budgets, categories, spending charts, and recurring bill reminders. Built by Kyra Labs."
   }
   </script>
 </head>
@@ -98,14 +117,14 @@
   <header class="global-nav" id="top">
     <div class="container">
       <a class="brand-mark" href="/" aria-label="Kyra Labs home">
-        <img src="/assets/img/kyra-wordmark.png" alt="Kyra Labs" width="140" height="58" />
+        <img src="/assets/img/kyra-wordmark.png" alt="Kyra Labs" width="97" height="52" />
       </a>
       <nav class="nav-links" aria-label="Primary">
         <a href="#about">About</a>
         <a href="#spenzia">Spenzia</a>
         <a href="#developer">Developer</a>
         <a href="#contact">Contact</a>
-        <a class="btn btn--primary nav-cta" href="https://spenzia.kyralabs.dev/#waitlist">Join waitlist</a>
+        <a class="btn btn--primary nav-cta" href="https://spenzia.kyralabs.dev/#waitlist">Get notified</a>
       </nav>
       <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -149,8 +168,8 @@
             <p class="body-copy body-copy--on-dark">Kyra Labs is an independent app studio — not a registered company, just a personal brand under which apps get designed, built, shipped, and supported end to end by a single developer. The focus stays narrow on purpose: everyday tools that solve one real problem well, without the ads, dark patterns, or bloat that come with most "productivity" apps.</p>
           </div>
           <ul class="fact-list">
-            <li><span class="dot"></span>Based in Bengaluru, India</li>
-            <li><span class="dot"></span>Android-first today — Kotlin, Jetpack Compose, Room, MVVM</li>
+            <li><span class="dot"></span>Remote-first, built solo</li>
+            <li><span class="dot"></span>Building cross-platform — web, Android, iOS, Linux, and Windows apps</li>
             <li><span class="dot"></span>Every app designed, coded, and shipped solo</li>
             <li><span class="dot"></span>An independent studio brand, not an incorporated company</li>
           </ul>
@@ -225,9 +244,9 @@
             </div>
           </div>
           <div class="app-details">
-            <span class="eyebrow eyebrow--on-dark">Coming soon</span>
+            <span class="eyebrow eyebrow--on-dark">In development</span>
             <h3>Spenzia — an expense tracker that doesn't feel like homework</h3>
-            <p class="body-copy body-copy--on-dark">Kyra Labs' next release. Spenzia keeps spending organized by category and budget, shows where the month's money actually went, and reminds you before a recurring bill sneaks up on you.</p>
+            <p class="body-copy body-copy--on-dark">Kyra Labs' next release: a privacy-focused, cross-platform expense tracker. Spenzia keeps spending organized by category and budget, shows where the month's money actually went, and reminds you before a recurring bill sneaks up on you.</p>
             <ul class="feature-checks">
               <li><span class="check">✓</span>Expense categories &amp; monthly budgets</li>
               <li><span class="check">✓</span>Charts and spending insights at a glance</li>
@@ -235,7 +254,7 @@
             </ul>
             <div class="btn-row" style="justify-content: flex-start;">
               <a class="btn btn--primary" href="https://spenzia.kyralabs.dev/">Visit Spenzia</a>
-              <a class="btn btn--ghost--on-dark" href="https://spenzia.kyralabs.dev/#waitlist">Join the waitlist</a>
+              <a class="btn btn--ghost--on-dark" href="https://spenzia.kyralabs.dev/#waitlist">Get notified</a>
             </div>
           </div>
         </div>
@@ -248,12 +267,12 @@
         <span class="eyebrow">Meet the developer</span>
         <h2 class="display-lg">One developer. Every line of code.</h2>
         <div class="developer-card">
-          <div class="avatar" aria-hidden="true">YT</div>
+          <div class="avatar" aria-hidden="true">MT</div>
           <div>
-            <h3>YamTee</h3>
-            <p>Founder of Kyra Labs. Android developer working in Kotlin and Jetpack Compose, building small, focused apps and writing the occasional line of MVVM architecture nobody asked for.</p>
+            <h3>Mohammed Thalha</h3>
+            <p>Founder of Kyra Labs. .NET, React, Kotlin, and Rust developer, building small, focused, cross-platform apps solo.</p>
             <div class="developer-links">
-              <a class="btn btn--primary" href="https://www.yamtee.online/" target="_blank" rel="noopener">Personal site</a>
+              <a class="btn btn--primary" href="https://yamtee.dev" target="_blank" rel="noopener">Personal site</a>
               <a class="btn btn--ghost" href="mailto:kyra.labs.3011@gmail.com">Email</a>
             </div>
           </div>
@@ -274,6 +293,7 @@
         </form>
         <div class="form-status" data-form-status role="status" aria-live="polite"></div>
         <p class="waitlist-note">Prefer email? Write to <a class="text-link" href="mailto:kyra.labs.3011@gmail.com" style="color: var(--color-primary-on-dark);">kyra.labs.3011@gmail.com</a>.</p>
+        <p class="waitlist-note">Follow along on <a class="text-link" href="https://www.instagram.com/kyra__labs/" target="_blank" rel="noopener" style="color: var(--color-primary-on-dark);">Instagram</a> or <a class="text-link" href="https://github.com/kyra-labs" target="_blank" rel="noopener" style="color: var(--color-primary-on-dark);">GitHub</a>.</p>
       </div>
     </section>
   </main>
@@ -281,8 +301,8 @@
   <footer class="site-footer">
     <div class="container footer-top">
       <div class="footer-brand">
-        <img src="/assets/img/kyra-wordmark.png" alt="Kyra Labs" width="120" height="50" />
-        <p>An independent, one-person app studio building practical apps for everyday life, from Bengaluru, India.</p>
+        <img src="/assets/img/kyra-wordmark.png" alt="Kyra Labs" width="104" height="56" />
+        <p>An independent, one-person app studio building practical apps for everyday life.</p>
       </div>
       <div class="footer-col">
         <h4>Studio</h4>
@@ -293,7 +313,9 @@
       <div class="footer-col">
         <h4>Connect</h4>
         <a href="mailto:kyra.labs.3011@gmail.com">Email</a>
-        <a href="https://www.yamtee.online/" target="_blank" rel="noopener">Personal site</a>
+        <a href="https://www.instagram.com/kyra__labs/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://github.com/kyra-labs" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://yamtee.dev" target="_blank" rel="noopener">Personal site</a>
         <a href="https://spenzia.kyralabs.dev/" target="_blank" rel="noopener">Spenzia</a>
       </div>
     </div>

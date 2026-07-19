@@ -56,12 +56,21 @@
   --shadow-product: 3px 5px 30px rgba(0, 0, 0, 0.22);
 
   /* Type */
-  --font-display: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: "Google Sans Rounded", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: "Google Sans Rounded", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 
   --max-content: 1440px;
   --max-text: 980px;
+}
+
+/* --------------------------------- fonts ---------------------------------*/
+@font-face {
+  font-family: "Google Sans Rounded";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("/assets/fonts/GoogleSansRounded.woff2") format("woff2");
 }
 
 /* ---------------------------------- reset ------------------------------- */
