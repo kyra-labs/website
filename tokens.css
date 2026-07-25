@@ -1,4 +1,4 @@
-/* Hallmark · theme tokens: Aurora · anchor hue: cyan · font: Google Sans Flex Rounded */
+/* Hallmark · theme tokens: Aurora · anchor hue: Kyra red · font: Google Sans Flex Rounded */
 :root {
   --color-paper: oklch(14% 0.025 220);
   --color-paper-2: oklch(20% 0.035 220);
@@ -11,21 +11,21 @@
   --color-body: oklch(79% 0.025 210);
   --color-muted: oklch(65% 0.025 215);
   --color-placeholder: oklch(60% 0.025 215);
-  --color-accent: oklch(69% 0.125 190);
-  --color-accent-light: oklch(81% 0.09 190);
+  --color-accent: #d84848;
+  --color-accent-light: oklch(78% 0.12 28);
   --color-accent-ink: oklch(16% 0.035 220);
-  --color-accent-soft: oklch(69% 0.125 190 / 0.2);
-  --color-focus: oklch(84% 0.12 190);
+  --color-accent-soft: oklch(57% 0.16 28 / 0.2);
+  --color-focus: oklch(84% 0.12 28);
   --color-error: oklch(76% 0.14 28);
   --color-success: oklch(78% 0.12 155);
   --color-rule: oklch(80% 0.025 205 / 0.16);
   --color-rule-strong: oklch(82% 0.03 205 / 0.28);
-  --color-bloom-strong: oklch(61% 0.12 190 / 0.24);
-  --color-bloom-soft: oklch(55% 0.1 205 / 0.18);
+  --color-bloom-strong: oklch(57% 0.16 28 / 0.24);
+  --color-bloom-soft: oklch(52% 0.12 20 / 0.18);
   --color-bloom-clear: oklch(20% 0.03 220 / 0);
-  --color-aurora-core: oklch(79% 0.13 185);
-  --color-aurora-edge: oklch(50% 0.1 210);
-  --color-orbit: oklch(80% 0.08 195 / 0.22);
+  --color-aurora-core: oklch(76% 0.14 28);
+  --color-aurora-edge: oklch(48% 0.13 22);
+  --color-orbit: oklch(80% 0.08 28 / 0.22);
   --color-ring-track: oklch(72% 0.025 210 / 0.18);
 
   --font-display: "Google Sans Flex Rounded", sans-serif;
@@ -80,5 +80,5 @@
 
   --shadow-nav: 0 1rem 3rem oklch(5% 0.02 220 / 0.28);
   --shadow-surface: 0 2rem 6rem oklch(5% 0.02 220 / 0.2);
-  --shadow-glow: 0 0 5rem oklch(69% 0.125 190 / 0.28);
+  --shadow-glow: 0 0 5rem oklch(57% 0.16 28 / 0.28);
 }

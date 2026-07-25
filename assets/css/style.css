@@ -1,4 +1,4 @@
-/* Hallmark · macrostructure: Split Studio · genre: atmospheric · theme: Aurora · anchor hue: cyan · enrichment: typography-only · nav: N5 · footer: Ft5 · contrast: pass (40–41) · slop: pass (42–45) · mobile: pass (34, 49, 50–57) · critique: P5 H5 E4 S5 R5 V4 */
+/* Hallmark · macrostructure: Split Studio · genre: atmospheric · theme: Aurora · anchor hue: Kyra red · enrichment: typography-only · nav: N5 · footer: Ft5 · contrast: pass (40–41) · slop: pass (42–45) · mobile: pass (34, 49, 50–57) · critique: P5 H5 E4 S5 R5 V4 */
 @import url("/tokens.css");
 
 @font-face {
@@ -201,20 +201,18 @@ section[id] {
 .wordmark {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-xs);
   min-height: var(--control-height);
-  font-weight: 700;
   line-height: 1;
   letter-spacing: -0.02em;
   white-space: nowrap;
 }
 
-.wordmark-mark {
-  width: var(--space-sm);
-  aspect-ratio: 1;
-  border-radius: var(--radius-round);
-  background: var(--color-accent);
-  box-shadow: 0 0 0 var(--space-2xs) var(--color-accent-soft);
+.wordmark-logo {
+  display: block;
+  width: 5.875rem;
+  height: auto;
+  transform-origin: left center;
+  transition: transform var(--dur-micro) var(--ease-out), opacity var(--dur-micro) var(--ease-out);
 }
 
 .nav-links {
@@ -838,6 +836,11 @@ section[id] {
   .btn:hover {
     transform: translateY(-1px);
   }
+
+  .wordmark:hover .wordmark-logo {
+    transform: scale(1.025);
+    opacity: 0.86;
+  }
 }
 
 @media (min-width: 40rem) {
@@ -925,6 +928,21 @@ section[id] {
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  @keyframes logo-reveal {
+    from {
+      opacity: 0;
+      transform: translateY(-0.25rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .wordmark-logo {
+    animation: logo-reveal var(--dur-reveal) var(--ease-out) both;
+  }
+
   .js [data-reveal] {
     opacity: 0;
     transition: opacity var(--dur-reveal) var(--ease-out);
@@ -962,6 +980,12 @@ section[id] {
   }
 
   .btn {
+    transition-duration: var(--dur-reduced);
+    transition-property: opacity;
+  }
+
+  .wordmark-logo {
+    animation: none;
     transition-duration: var(--dur-reduced);
     transition-property: opacity;
   }
