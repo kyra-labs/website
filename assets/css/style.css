@@ -1,4 +1,4 @@
-/* Hallmark · macrostructure: Split Studio · genre: atmospheric · theme: Aurora · anchor hue: Kyra red · enrichment: typography-only · nav: N5 · footer: Ft5 · contrast: pass (40–41) · slop: pass (42–45) · mobile: pass (34, 49, 50–57) · critique: P5 H5 E4 S5 R5 V4 */
+/* Hallmark · macrostructure: Split Studio · genre: modern-minimal · theme: Coral · anchor hue: Kyra red · enrichment: typography-only · nav: N5 · footer: Ft5 · contrast: pass (40–41) · slop: pass (42–45) · mobile: pass (34, 49, 50–57) · critique: P5 H5 E5 S5 R5 V4 */
 @import url("/tokens.css");
 
 @font-face {
@@ -209,7 +209,7 @@ section[id] {
 
 .wordmark-logo {
   display: block;
-  width: 5.875rem;
+  width: 4.625rem;
   height: auto;
   transform-origin: left center;
   transition: transform var(--dur-micro) var(--ease-out), opacity var(--dur-micro) var(--ease-out);
@@ -819,6 +819,10 @@ section[id] {
   min-height: var(--control-height);
   align-content: center;
   white-space: nowrap;
+}
+
+.footer-meta .wordmark-logo {
+  width: 5.25rem;
 }
 
 @media (hover: hover) and (pointer: fine) {
