@@ -209,8 +209,8 @@ section[id] {
 
 .wordmark-logo {
   display: block;
-  width: 4.625rem;
-  height: auto;
+  width: auto;
+  height: var(--logo-height-header);
   transform-origin: left center;
   transition: transform var(--dur-micro) var(--ease-out), opacity var(--dur-micro) var(--ease-out);
 }
@@ -822,7 +822,7 @@ section[id] {
 }
 
 .footer-meta .wordmark-logo {
-  width: 5.25rem;
+  height: var(--logo-height-footer);
 }
 
 @media (hover: hover) and (pointer: fine) {
