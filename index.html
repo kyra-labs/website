@@ -2,52 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Kyra Labs — Independent App Studio Building Everyday Apps</title>
-  <meta name="description" content="Kyra Labs is an independent, one-person app studio designing practical, privacy-conscious apps for everyday life. Currently building Spenzia, an expense tracker — in development." />
+  <meta name="description" content="Kyra Labs is an independent, one-person app studio designing practical, privacy-conscious apps for everyday life. Currently building Spenzia, an expense tracker." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://kyralabs.dev/" />
-  <meta name="theme-color" content="#1e1d1f" />
+  <meta name="theme-color" content="oklch(14% 0.025 220)" />
   <meta name="author" content="Kyra Labs" />
   <meta name="keywords" content="Kyra Labs, cross-platform apps, indie app studio, independent developer, expense tracker app, Spenzia, everyday productivity apps" />
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Kyra Labs" />
   <meta property="og:title" content="Kyra Labs — Independent App Studio Building Everyday Apps" />
-  <meta property="og:description" content="A one-person studio designing practical, privacy-conscious apps for everyday life. Currently building Spenzia, an expense tracker — in development." />
+  <meta property="og:description" content="A one-person studio designing practical, privacy-conscious apps for everyday life. Currently building Spenzia." />
   <meta property="og:url" content="https://kyralabs.dev/" />
   <meta property="og:image" content="https://kyralabs.dev/assets/img/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="en_IN" />
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Kyra Labs — Independent App Studio Building Everyday Apps" />
-  <meta name="twitter:description" content="A one-person studio designing practical, privacy-conscious apps for everyday life. Currently building Spenzia, an expense tracker." />
+  <meta name="twitter:description" content="A one-person studio designing practical, privacy-conscious apps for everyday life. Currently building Spenzia." />
   <meta name="twitter:image" content="https://kyralabs.dev/assets/img/og-image.png" />
 
-  <!-- Icons / PWA -->
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <meta name="apple-mobile-web-app-title" content="Kyra Labs" />
   <link rel="manifest" href="/site.webmanifest" />
-
-  <!-- Fonts -->
   <link rel="preload" href="/assets/fonts/GoogleSansRounded.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&display=swap"
-    rel="stylesheet"
-  />
   <link rel="stylesheet" href="/assets/css/style.css" />
   <script>document.documentElement.classList.add("js");</script>
 
-  <!-- Structured data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -81,264 +69,197 @@
     ]
   }
   </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Kyra Labs",
-    "url": "https://kyralabs.dev/",
-    "publisher": { "@id": "https://kyralabs.dev/#organization" }
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Spenzia",
-    "applicationCategory": "FinanceApplication",
-    "operatingSystem": "Web, Android, iOS, Linux, Windows",
-    "url": "https://spenzia.kyralabs.dev/",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Kyra Labs"
-    },
-    "offers": {
-      "@type": "Offer",
-      "availability": "https://schema.org/PreOrder",
-      "price": "0",
-      "priceCurrency": "INR"
-    },
-    "description": "Spenzia is an upcoming open-source, cross-platform expense tracker with budgets, categories, spending charts, and recurring bill reminders. Built by Kyra Labs."
-  }
-  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="global-nav" id="top">
-    <div class="container">
-      <a class="brand-mark" href="/" aria-label="Kyra Labs home">
-        <img src="/assets/img/kyra-wordmark.png" alt="Kyra Labs" width="97" height="52" />
+  <header class="site-header">
+    <nav class="nav-pill" aria-label="Primary">
+      <a class="wordmark" href="#top" aria-label="Kyra Labs home">
+        <span class="wordmark-mark" aria-hidden="true"></span>
+        Kyra Labs
       </a>
-      <nav class="nav-links" aria-label="Primary">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+        <span class="visually-hidden">Toggle navigation</span>
+        <span></span><span></span>
+      </button>
+      <div class="nav-links" id="nav-links">
         <a href="#about">About</a>
         <a href="#spenzia">Spenzia</a>
         <a href="#developer">Developer</a>
-        <a href="#contact">Contact</a>
-        <a class="btn btn--primary nav-cta" href="https://spenzia.kyralabs.dev/#waitlist">Get notified</a>
-      </nav>
-      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
-    </div>
+        <a class="btn btn--compact" href="#contact">Say hello</a>
+      </div>
+    </nav>
   </header>
 
   <main id="main">
-    <!-- Hero -->
-    <!-- Signature element: the wordmark's dot-scatter, rebuilt as a live SVG
-         constellation. On load the dots "sprinkle" down and settle with a
-         slight overshoot (staggered, heaviest dots landing first), then
-         drift/breathe very gently at rest. This is the one place the motion
-         budget is spent boldly — everything else on the page shares a single,
-         quieter reveal language. See REDESIGN-NOTES.md. -->
-    <section class="tile tile--parchment hero">
-      <div class="container tile-stack">
-        <div class="hero-motif" aria-hidden="true">
-          <svg viewBox="0 0 320 150" xmlns="http://www.w3.org/2000/svg">
-            <g class="motif-dot-g" style="--d:.05s"><circle class="motif-dot" style="--fd:6.1s;--fdel:1.25s" cx="202" cy="36" r="11" opacity="0.92"/></g>
-            <g class="motif-dot-g" style="--d:.1s"><circle class="motif-dot" style="--fd:7.2s;--fdel:1.3s" cx="194" cy="84" r="9" opacity="0.85"/></g>
-            <g class="motif-dot-g" style="--d:.12s"><circle class="motif-dot" style="--fd:5.2s;--fdel:1.32s" cx="164" cy="50" r="7" opacity="0.8"/></g>
-            <g class="motif-dot-g" style="--d:.16s"><circle class="motif-dot" style="--fd:5.4s;--fdel:1.36s" cx="236" cy="58" r="6" opacity="0.72"/></g>
-            <g class="motif-dot-g" style="--d:.18s"><circle class="motif-dot" style="--fd:5.9s;--fdel:1.38s" cx="116" cy="72" r="6.5" opacity="0.65"/></g>
-            <g class="motif-dot-g" style="--d:.22s"><circle class="motif-dot" style="--fd:6.6s;--fdel:1.42s" cx="268" cy="44" r="5" opacity="0.6"/></g>
-            <g class="motif-dot-g" style="--d:.26s"><circle class="motif-dot" style="--fd:5.6s;--fdel:1.46s" cx="84" cy="90" r="5" opacity="0.55"/></g>
-            <g class="motif-dot-g" style="--d:.3s"><circle class="motif-dot" style="--fd:6.8s;--fdel:1.5s" cx="148" cy="94" r="8" opacity="0.7"/></g>
-            <g class="motif-dot-g" style="--d:.34s"><circle class="motif-dot" style="--fd:6.4s;--fdel:1.54s" cx="58" cy="116" r="4" opacity="0.45"/></g>
-            <g class="motif-dot-g" style="--d:.38s"><circle class="motif-dot" style="--fd:5s;--fdel:1.58s" cx="250" cy="92" r="4.5" opacity="0.5"/></g>
-          </svg>
+    <section class="hero section-shell" id="top">
+      <div class="split split--hero">
+        <div class="split-copy hero-copy" data-reveal>
+          <p class="signal">Independent app studio</p>
+          <h1>Apps for real life.</h1>
+          <p class="lede">Kyra Labs designs and builds practical software for the things people actually deal with every day. Small in scope. Clear in purpose. Built by one developer.</p>
+          <div class="action-row">
+            <a class="btn btn--primary" href="#spenzia">See what’s next</a>
+            <a class="btn btn--quiet" href="#about">Meet the studio</a>
+          </div>
         </div>
-        <span class="eyebrow">Independent app studio</span>
-        <h1 class="hero-display"><span class="hero-line">Real problems<span class="hero-dot">.</span></span><br /><span class="hero-line">Real apps<span class="hero-dot">.</span> One developer<span class="hero-dot">.</span></span></h1>
-        <p class="lead">Kyra Labs designs and builds practical apps for things people actually deal with every day — not another feature-bloated platform. Currently in the workshop: Spenzia, an expense tracker.</p>
-        <div class="btn-row">
-          <a class="btn btn--primary btn--lg" href="#spenzia">See what's next</a>
-          <a class="btn btn--ghost btn--lg" href="#contact">Get in touch</a>
-        </div>
+
+        <aside class="hero-proof" aria-label="Current project" data-reveal>
+          <div class="orbit" aria-hidden="true">
+            <span class="orbit-core"></span>
+            <span class="orbit-line orbit-line--one"></span>
+            <span class="orbit-line orbit-line--two"></span>
+          </div>
+          <div class="proof-copy">
+            <p class="signal">In the workshop</p>
+            <h2>Spenzia</h2>
+            <p>A focused expense tracker that keeps the month understandable.</p>
+            <a class="text-link" href="https://spenzia.kyralabs.dev/">Visit Spenzia <span aria-hidden="true">↗</span></a>
+          </div>
+        </aside>
       </div>
     </section>
 
-    <!-- About -->
-    <section id="about" class="tile tile--dark">
-      <div class="container">
-        <div class="about-grid" data-reveal>
-          <div>
-            <span class="eyebrow eyebrow--on-dark">About</span>
-            <h2 class="display-lg">A studio of one, building software meant to be used, not just installed.</h2>
-            <p class="body-copy body-copy--on-dark">Kyra Labs is an independent app studio — not a registered company, just a personal brand under which apps get designed, built, shipped, and supported end to end by a single developer. The focus stays narrow on purpose: everyday tools that solve one real problem well, without the ads, dark patterns, or bloat that come with most "productivity" apps.</p>
-          </div>
-          <ul class="fact-list">
-            <li><span class="dot"></span>Remote-first, built solo</li>
-            <li><span class="dot"></span>Building cross-platform — web, Android, iOS, Linux, and Windows apps</li>
-            <li><span class="dot"></span>Every app designed, coded, and shipped solo</li>
-            <li><span class="dot"></span>An independent studio brand, not an incorporated company</li>
+    <section class="section-shell" id="about">
+      <div class="split">
+        <div class="split-copy" data-reveal>
+          <p class="signal">The studio</p>
+          <h2>Software meant to be used, not just installed.</h2>
+          <p>Kyra Labs is an independent app studio — not a registered company, but a personal brand under which apps are designed, built, shipped, and supported end to end by a single developer.</p>
+          <p>The focus stays narrow on purpose: everyday tools that solve one real problem well, without the ads, dark patterns, or bloat that follow most “productivity” apps.</p>
+        </div>
+        <ul class="fact-list proof-surface" data-reveal>
+          <li><span>01</span><p>Remote-first and built solo.</p></li>
+          <li><span>02</span><p>Cross-platform: web, Android, iOS, Linux, and Windows.</p></li>
+          <li><span>03</span><p>Every app designed, coded, and shipped by one developer.</p></li>
+          <li><span>04</span><p>An independent studio brand, not an incorporated company.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section-shell section-shell--wide" aria-labelledby="principles-heading">
+      <div class="section-intro" data-reveal>
+        <p class="signal">How Kyra Labs works</p>
+        <h2 id="principles-heading">Three rules the studio doesn’t break.</h2>
+      </div>
+      <div class="principles" data-reveal>
+        <article>
+          <span aria-hidden="true">Daily</span>
+          <h3>Built to earn a place in your routine.</h3>
+          <p>Every feature has to justify the screen space it takes.</p>
+        </article>
+        <article>
+          <span aria-hidden="true">Private</span>
+          <h3>Your data stays yours by default.</h3>
+          <p>No selling attention, no dark patterns, no tracking you didn’t ask for.</p>
+        </article>
+        <article>
+          <span aria-hidden="true">End to end</span>
+          <h3>One maker from first sketch to support.</h3>
+          <p>Design, code, release, and iteration stay connected.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-shell" id="spenzia">
+      <div class="split split--reverse">
+        <div class="split-copy" data-reveal>
+          <p class="signal">In development</p>
+          <h2>An expense tracker that doesn’t feel like homework.</h2>
+          <p>Spenzia keeps spending organised by category and budget, shows where the month’s money actually went, and reminds you before a recurring bill sneaks up on you.</p>
+          <ul class="feature-list">
+            <li>Expense categories and monthly budgets</li>
+            <li>Charts and spending insights at a glance</li>
+            <li>Reminders for recurring bills</li>
           </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Values -->
-    <section class="tile tile--light">
-      <div class="container tile-stack" data-reveal>
-        <span class="eyebrow">How Kyra Labs works</span>
-        <h2 class="display-lg">Three rules the studio doesn't break</h2>
-        <div class="card-grid">
-          <div class="value-card">
-            <div class="value-card__icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2L12 16.4 5.7 20.8 8 13.6 2 9.2h7.6z"/></svg>
-            </div>
-            <h3>Built to be used daily</h3>
-            <p>If an app doesn't earn a place in someone's routine, it isn't finished. Every feature has to justify the screen space it takes.</p>
-          </div>
-          <div class="value-card">
-            <div class="value-card__icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
-            </div>
-            <h3>Privacy by default</h3>
-            <p>Data stays on-device wherever it reasonably can. No selling attention, no dark patterns, no tracking you didn't ask for.</p>
-          </div>
-          <div class="value-card">
-            <div class="value-card__icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>
-            </div>
-            <h3>Shipped end to end</h3>
-            <p>One person handles design, code, release, and support — which means fast iteration and no committee smoothing the edges off.</p>
+          <div class="action-row">
+            <a class="btn btn--primary" href="https://spenzia.kyralabs.dev/">Visit Spenzia</a>
+            <a class="btn btn--quiet" href="https://spenzia.kyralabs.dev/#waitlist">Get notified</a>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Spenzia showcase -->
-    <section id="spenzia" class="tile tile--dark-2">
-      <div class="container">
-        <div class="app-showcase" data-reveal>
-          <div class="phone-frame">
-            <div class="phone-frame__notch"></div>
-            <div class="phone-frame__screen">
-              <div class="mock-top">
-                <div>
-                  <div class="mock-balance-label">Spent this month</div>
-                  <div class="mock-balance">₹<span data-count="18240">18,240</span></div>
-                </div>
-                <div class="mock-ring" aria-hidden="true">
-                  <svg viewBox="0 0 48 48">
-                    <circle class="ring-track" cx="24" cy="24" r="22" fill="none" stroke-width="4.5"/>
-                    <circle class="ring-fg" cx="24" cy="24" r="22" fill="none" stroke-width="4.5" transform="rotate(-90 24 24)"/>
-                  </svg>
-                </div>
-              </div>
-              <span class="mock-chip">● <span data-count="62">62</span>% of budget used</span>
-              <div class="mock-row">
-                <div>
-                  <div class="mock-row__label">Groceries</div>
-                  <div class="mock-row__sub">Today · Food</div>
-                </div>
-                <div class="mock-row__amt">− ₹640</div>
-              </div>
-              <div class="mock-row">
-                <div>
-                  <div class="mock-row__label">Electricity bill</div>
-                  <div class="mock-row__sub">Due in 3 days · Recurring</div>
-                </div>
-                <div class="mock-row__amt">− ₹1,120</div>
-              </div>
-              <div class="mock-row">
-                <div>
-                  <div class="mock-row__label">Cab ride</div>
-                  <div class="mock-row__sub">Yesterday · Transport</div>
-                </div>
-                <div class="mock-row__amt">− ₹210</div>
-              </div>
+        <div class="ledger proof-surface" aria-label="Example Spenzia spending overview" data-reveal>
+          <div class="ledger-summary">
+            <div>
+              <p>Spent this month</p>
+              <strong>₹<span data-count="18240">18,240</span></strong>
+            </div>
+            <div class="budget-ring" aria-label="62 percent of budget used">
+              <svg viewBox="0 0 52 52" role="img">
+                <circle class="ring-track" cx="26" cy="26" r="22" fill="none" stroke-width="4" />
+                <circle class="ring-value" cx="26" cy="26" r="22" fill="none" stroke-width="4" transform="rotate(-90 26 26)" />
+              </svg>
+              <span><b data-count="62">62</b>%</span>
             </div>
           </div>
-          <div class="app-details">
-            <span class="eyebrow eyebrow--on-dark">In development</span>
-            <h3>Spenzia — an expense tracker that doesn't feel like homework</h3>
-            <p class="body-copy body-copy--on-dark">Kyra Labs' next release: a privacy-focused, cross-platform expense tracker. Spenzia keeps spending organized by category and budget, shows where the month's money actually went, and reminds you before a recurring bill sneaks up on you.</p>
-            <ul class="feature-checks">
-              <li><span class="check">✓</span>Expense categories &amp; monthly budgets</li>
-              <li><span class="check">✓</span>Charts and spending insights at a glance</li>
-              <li><span class="check">✓</span>Reminders for recurring bills</li>
-            </ul>
-            <div class="btn-row btn-row--start">
-              <a class="btn btn--primary" href="https://spenzia.kyralabs.dev/">Visit Spenzia</a>
-              <a class="btn btn--ghost--on-dark" href="https://spenzia.kyralabs.dev/#waitlist">Get notified</a>
-            </div>
+          <div class="ledger-row">
+            <div><b>Groceries</b><span>Today · Food</span></div><strong>− ₹640</strong>
+          </div>
+          <div class="ledger-row">
+            <div><b>Electricity bill</b><span>Due in 3 days · Recurring</span></div><strong>− ₹1,120</strong>
+          </div>
+          <div class="ledger-row">
+            <div><b>Cab ride</b><span>Yesterday · Transport</span></div><strong>− ₹210</strong>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Developer -->
-    <section id="developer" class="tile tile--parchment">
-      <div class="container tile-stack" data-reveal>
-        <span class="eyebrow">Meet the developer</span>
-        <h2 class="display-lg">One developer. Every line of code.</h2>
-        <div class="developer-card">
-          <div class="avatar" aria-hidden="true">MT</div>
+    <section class="section-shell" id="developer">
+      <div class="split">
+        <div class="split-copy" data-reveal>
+          <p class="signal">The developer</p>
+          <h2>One developer. Every line of code.</h2>
+          <p>Mohammed Thalha is the founder of Kyra Labs — a .NET, React, Kotlin, and Rust developer building small, focused, cross-platform apps solo.</p>
+          <div class="action-row">
+            <a class="btn btn--primary" href="https://yamtee.dev" target="_blank" rel="noopener">Personal site</a>
+            <a class="btn btn--quiet" href="mailto:contact@kyralabs.dev">Email</a>
+          </div>
+        </div>
+        <div class="maker-mark proof-surface" data-reveal>
+          <span aria-hidden="true">MT</span>
           <div>
-            <h3>Mohammed Thalha</h3>
-            <p>Founder of Kyra Labs. .NET, React, Kotlin, and Rust developer, building small, focused, cross-platform apps solo.</p>
-            <div class="developer-links">
-              <a class="btn btn--primary" href="https://yamtee.dev" target="_blank" rel="noopener">Personal site</a>
-              <a class="btn btn--ghost" href="mailto:contact@kyralabs.dev">Email</a>
-            </div>
+            <p class="signal">Mohammed Thalha</p>
+            <p>Design · Engineering · Release · Support</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Contact / waitlist -->
-    <section id="contact" class="tile tile--dark">
-      <div class="container tile-stack" data-reveal>
-        <span class="eyebrow eyebrow--on-dark">Stay in the loop</span>
-        <h2 class="display-lg">Hear about new Kyra Labs apps first</h2>
-        <p class="lead lead--on-dark">One email when Spenzia — or whatever ships next — is ready. No newsletter spam, no lists sold on.</p>
-        <form class="waitlist-form" data-waitlist-form>
-          <label class="visually-hidden" for="home-email">Email address</label>
-          <input class="waitlist-input" id="home-email" type="email" placeholder="you@example.com" required autocomplete="email" />
-          <button class="btn btn--primary" type="submit">Notify me</button>
-        </form>
-        <div class="form-status" data-form-status role="status" aria-live="polite"></div>
-        <p class="waitlist-note">Prefer email? Write to <a class="text-link" href="mailto:contact@kyralabs.dev">contact@kyralabs.dev</a>.</p>
-        <p class="waitlist-note">Follow along on <a class="text-link" href="https://www.instagram.com/kyra__labs/" target="_blank" rel="noopener">Instagram</a> or <a class="text-link" href="https://github.com/kyra-labs" target="_blank" rel="noopener">GitHub</a>.</p>
+    <section class="section-shell contact" id="contact">
+      <div class="split">
+        <div class="split-copy" data-reveal>
+          <p class="signal">Stay in the loop</p>
+          <h2>Hear when the next useful thing ships.</h2>
+          <p>One email when Spenzia — or whatever comes next — is ready. No newsletter spam. No lists sold on.</p>
+        </div>
+        <div class="contact-action" data-reveal>
+          <form class="waitlist-form" data-waitlist-form novalidate>
+            <label for="home-email">Email address</label>
+            <div class="input-row">
+              <input id="home-email" name="email" type="email" placeholder="you@example.com" required autocomplete="email" aria-describedby="email-status" />
+              <button class="btn btn--primary" type="submit">Notify me</button>
+            </div>
+            <p class="form-status" id="email-status" data-form-status aria-live="polite">We’ll only write when something ships.</p>
+          </form>
+          <p class="contact-links">
+            Prefer a direct line?
+            <a href="mailto:contact@kyralabs.dev">Email</a>
+            <a href="https://www.instagram.com/kyra__labs/" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://github.com/kyra-labs" target="_blank" rel="noopener">GitHub</a>
+          </p>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-top">
-      <div class="footer-brand">
-        <img src="/assets/img/kyra-wordmark.png" alt="Kyra Labs" width="104" height="56" />
-        <p>An independent, one-person app studio building practical apps for everyday life.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Studio</h4>
-        <a href="#about">About</a>
-        <a href="#spenzia">Spenzia</a>
-        <a href="#developer">Developer</a>
-      </div>
-      <div class="footer-col">
-        <h4>Connect</h4>
-        <a href="mailto:contact@kyralabs.dev">Email</a>
-        <a href="https://www.instagram.com/kyra__labs/" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://github.com/kyra-labs" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://yamtee.dev" target="_blank" rel="noopener">Personal site</a>
-        <a href="https://spenzia.kyralabs.dev/" target="_blank" rel="noopener">Spenzia</a>
-      </div>
-    </div>
-    <div class="container footer-bottom">
-      <p>© 2026 Kyra Labs. An independent studio, not a registered company.</p>
-      <a href="/privacy.html">Privacy Policy</a>
+    <p class="footer-statement">Small software can still make a meaningful difference.</p>
+    <div class="footer-meta">
+      <a class="wordmark" href="#top"><span class="wordmark-mark" aria-hidden="true"></span>Kyra Labs</a>
+      <p>© 2026 Kyra Labs · Independent studio, not a registered company.</p>
+      <a href="/privacy.html">Privacy</a>
     </div>
   </footer>
 
