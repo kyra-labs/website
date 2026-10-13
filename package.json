@@ -1,0 +1,44 @@
+{
+  "name": "kyralabs-website",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "kyralabs.dev: the Kyra Labs studio site, built with Astro on @kyralabs Material 3 Expressive.",
+  "packageManager": "pnpm@12.11.2",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "gen": "pnpm gen:theme && pnpm gen:icons",
+    "gen:theme": "node scripts/gen-theme.mjs",
+    "gen:icons": "m3e-icons subset --names-file src/icons.txt --wght 400 --grad 0 --opsz 24 --out src/styles/generated/site-icons.woff2 --css src/styles/generated/icons.css --family \"Kyra Icons\"",
+    "dev": "pnpm gen && astro dev",
+    "build": "pnpm gen && astro build",
+    "preview": "astro preview",
+    "typecheck": "astro check",
+    "lint:css": "stylelint \"src/**/*.css\"",
+    "check:js": "node scripts/check-client-js.mjs",
+    "lighthouse": "lhci autorun && lhci autorun --collect.settings.preset=desktop --upload.outputDir=./.lighthouseci/reports-desktop"
+  },
+  "dependencies": {
+    "@astrojs/react": "7.0.1",
+    "@kyralabs/m3e-css": "^1.0.0",
+    "@kyralabs/m3e-react": "^1.0.0",
+    "@kyralabs/m3e-tokens": "^1.0.0",
+    "astro": "7.3.8",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "@kyralabs/m3e-icons": "^1.0.0",
+    "@lhci/cli": "0.15.1",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "htmlparser2": "12.0.0",
+    "postcss-value-parser": "4.2.0",
+    "stylelint": "17.16.0",
+    "stylelint-config-standard": "40.0.0",
+    "typescript": "6.0.3"
+  }
+}

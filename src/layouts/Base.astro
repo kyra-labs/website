@@ -1,0 +1,101 @@
+---
+import { createTheme } from '@kyralabs/m3e-tokens/theme';
+import { brand } from '../brand.mjs';
+import NavFallback from '../components/NavFallback.astro';
+import SectionNav from '../islands/SectionNav';
+import type { NavLink } from '../nav';
+import '../styles/site.css';
+// The latin chunk of Google Sans Flex (fonts.css), preloaded as the old site preloaded its font.
+import fontLatin from '@kyralabs/m3e-tokens/fonts/google-sans-flex-latin.woff2?url';
+
+interface Props {
+  title: string;
+  nav: readonly NavLink[];
+  /** Where the wordmarks link: "#top" on the home page, "/" elsewhere. */
+  homeHref: string;
+  footer: { statement: string; link: { href: string; label: string } };
+}
+
+const { title, nav, homeHref, footer } = Astro.props;
+// Browser UI colour in dark mode: the generated dark surface (the light value is the site's
+// original theme-color, kept as is).
+const darkSurface = createTheme({ ...brand, mode: 'dark' }).tokens.dark?.surface;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>{title}</title>
+    <slot name="head" />
+    <link rel="preload" href={fontLatin} as="font" type="font/woff2" crossorigin />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content={darkSurface} />
+    <meta name="theme-color" content="oklch(97% 0.012 35)" />
+    <slot name="meta" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Kyra Labs" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <slot name="structured-data" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="m3e-top-app-bar site-bar">
+      <div class="m3e-top-app-bar__headline site-bar__headline">
+        <a class="wordmark" href={homeHref} aria-label="Kyra Labs home">
+          <img
+            class="wordmark-logo"
+            src="/assets/img/kyra-wordmark.png"
+            alt="Kyra Labs"
+            width="670"
+            height="360"
+          />
+        </a>
+      </div>
+      <nav class="m3e-top-app-bar__actions site-bar__links" aria-label="Primary">
+        {
+          nav.map((item) => (
+            <a
+              class:list={[
+                'm3e-button',
+                item.isPrimary ? 'm3e-button--size-s' : 'm3e-button--text m3e-button--size-s',
+              ]}
+              href={item.href}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+    </header>
+
+    <SectionNav client:only="react" items={nav}>
+      <NavFallback slot="fallback" items={nav} />
+    </SectionNav>
+
+    <slot />
+
+    <footer class="site-footer">
+      <hr class="m3e-divider" />
+      <p class="footer-statement">{footer.statement}</p>
+      <div class="footer-meta">
+        <a class="wordmark" href={homeHref}
+          ><img
+            class="wordmark-logo"
+            src="/assets/img/kyra-wordmark.png"
+            alt="Kyra Labs"
+            width="670"
+            height="360"
+          /></a
+        >
+        <p>© 2026 Kyra Labs · Independent studio, not a registered company.</p>
+        <a class="footer-link" href={footer.link.href}>{footer.link.label}</a>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,42 +1,45 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Kyra Labs — Independent App Studio Building Everyday Apps</title>
-  <meta name="description" content="Kyra Labs is an independent app studio building practical, privacy-conscious apps. Antecedent, a daily tech-history digest, is live now; Spenzia, an expense tracker, is in development." />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://kyralabs.dev/" />
-  <meta name="theme-color" content="oklch(97% 0.012 35)" />
-  <meta name="author" content="Kyra Labs" />
-  <meta name="keywords" content="Kyra Labs, Antecedent, tech news digest, entity tracking, daily digest app, cross-platform apps, indie app studio, independent developer, expense tracker app, Spenzia, everyday productivity apps" />
+---
+import WaitlistFallback from '../components/WaitlistFallback.astro';
+import WaitlistForm from '../islands/WaitlistForm';
+import Base from '../layouts/Base.astro';
+import { homeNav } from '../nav';
+---
 
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Kyra Labs" />
-  <meta property="og:title" content="Kyra Labs — Independent App Studio Building Everyday Apps" />
-  <meta property="og:description" content="A one-person studio building practical, privacy-conscious apps. Antecedent, a daily tech-history digest, is live now; Spenzia is in development." />
-  <meta property="og:url" content="https://kyralabs.dev/" />
-  <meta property="og:image" content="https://kyralabs.dev/assets/img/og-image.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:locale" content="en_IN" />
+<Base
+  title="Kyra Labs — Independent App Studio Building Everyday Apps"
+  nav={homeNav}
+  homeHref="#top"
+  footer={{
+    statement: 'Small software can still make a meaningful difference.',
+    link: { href: '/privacy.html', label: 'Privacy' },
+  }}
+>
+  <Fragment slot="head">
+    <meta name="description" content="Kyra Labs is an independent app studio building practical, privacy-conscious apps. Antecedent, a daily tech-history digest, is live now; Spenzia, an expense tracker, is in development." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://kyralabs.dev/" />
+  </Fragment>
+  <Fragment slot="meta">
+    <meta name="author" content="Kyra Labs" />
+    <meta name="keywords" content="Kyra Labs, Antecedent, tech news digest, entity tracking, daily digest app, cross-platform apps, indie app studio, independent developer, expense tracker app, Spenzia, everyday productivity apps" />
 
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Kyra Labs — Independent App Studio Building Everyday Apps" />
-  <meta name="twitter:description" content="A one-person studio building practical, privacy-conscious apps. Antecedent, a daily tech-history digest, is live now; Spenzia is in development." />
-  <meta name="twitter:image" content="https://kyralabs.dev/assets/img/og-image.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Kyra Labs" />
+    <meta property="og:title" content="Kyra Labs — Independent App Studio Building Everyday Apps" />
+    <meta property="og:description" content="A one-person studio building practical, privacy-conscious apps. Antecedent, a daily tech-history digest, is live now; Spenzia is in development." />
+    <meta property="og:url" content="https://kyralabs.dev/" />
+    <meta property="og:image" content="https://kyralabs.dev/assets/img/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_IN" />
 
-  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <meta name="apple-mobile-web-app-title" content="Kyra Labs" />
-  <link rel="manifest" href="/site.webmanifest" />
-  <link rel="preload" href="/assets/fonts/GoogleSansRounded.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="/assets/css/style.css" />
-  <script>document.documentElement.classList.add("js");</script>
-
-  <script type="application/ld+json">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Kyra Labs — Independent App Studio Building Everyday Apps" />
+    <meta name="twitter:description" content="A one-person studio building practical, privacy-conscious apps. Antecedent, a daily tech-history digest, is live now; Spenzia is in development." />
+    <meta name="twitter:image" content="https://kyralabs.dev/assets/img/og-image.png" />
+  </Fragment>
+  <Fragment slot="structured-data">
+    <script type="application/ld+json" is:inline>
   {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -52,7 +55,7 @@
     ]
   }
   </script>
-  <script type="application/ld+json">
+    <script type="application/ld+json" is:inline>
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
@@ -71,7 +74,7 @@
     ]
   }
   </script>
-  <script type="application/ld+json">
+    <script type="application/ld+json" is:inline>
   {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -88,28 +91,7 @@
     ]
   }
   </script>
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <header class="site-header">
-    <nav class="nav-pill" aria-label="Primary">
-      <a class="wordmark" href="#top" aria-label="Kyra Labs home">
-        <img class="wordmark-logo" src="/assets/img/kyra-wordmark.png" alt="Kyra Labs" width="670" height="360" />
-      </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
-        <span class="visually-hidden">Toggle navigation</span>
-        <span></span><span></span>
-      </button>
-      <div class="nav-links" id="nav-links">
-        <a href="#about">About</a>
-        <a href="#antecedent">Antecedent</a>
-        <a href="#spenzia">Spenzia</a>
-        <a href="#developer">Developer</a>
-        <a class="btn btn--compact" href="#contact">Say hello</a>
-      </div>
-    </nav>
-  </header>
+  </Fragment>
 
   <main id="main">
     <section class="hero section-shell" id="top">
@@ -119,12 +101,12 @@
           <h1>Apps for real life.</h1>
           <p class="lede">Kyra Labs designs and builds practical software for the things people actually deal with every day. Small in scope. Clear in purpose. Built by one developer.</p>
           <div class="action-row">
-            <a class="btn btn--primary" href="#spenzia">See what’s next</a>
-            <a class="btn btn--quiet" href="#about">Meet the studio</a>
+            <a class="m3e-button m3e-button--size-m" href="#spenzia">See what’s next</a>
+            <a class="m3e-button m3e-button--outlined m3e-button--size-m" href="#about">Meet the studio</a>
           </div>
         </div>
 
-        <aside class="hero-proof" aria-label="Current project" data-reveal>
+        <aside class="m3e-card m3e-card--elevated hero-proof" aria-label="Current project" data-reveal>
           <div class="orbit" aria-hidden="true">
             <span class="orbit-core"></span>
             <span class="orbit-line orbit-line--one"></span>
@@ -148,7 +130,7 @@
           <p>Kyra Labs is an independent app studio — not a registered company, but a personal brand under which apps are designed, built, shipped, and supported end to end by a single developer.</p>
           <p>The focus stays narrow on purpose: everyday tools that solve one real problem well, without the ads, dark patterns, or bloat that follow most “productivity” apps.</p>
         </div>
-        <ul class="fact-list proof-surface" data-reveal>
+        <ul class="m3e-card m3e-card--elevated fact-list" data-reveal>
           <li><span>01</span><p>Remote-first and built solo.</p></li>
           <li><span>02</span><p>Cross-platform: web, Android, iOS, Linux, and Windows.</p></li>
           <li><span>03</span><p>Every app designed, coded, and shipped by one developer.</p></li>
@@ -163,17 +145,17 @@
         <h2 id="principles-heading">Three rules the studio doesn’t break.</h2>
       </div>
       <div class="principles" data-reveal>
-        <article>
+        <article class="m3e-card m3e-card--outlined">
           <span aria-hidden="true">Daily</span>
           <h3>Built to earn a place in your routine.</h3>
           <p>Every feature has to justify the screen space it takes.</p>
         </article>
-        <article>
+        <article class="m3e-card m3e-card--filled">
           <span aria-hidden="true">Private</span>
           <h3>Your data stays yours by default.</h3>
           <p>No selling attention, no dark patterns, no tracking you didn’t ask for.</p>
         </article>
-        <article>
+        <article class="m3e-card m3e-card--outlined">
           <span aria-hidden="true">End to end</span>
           <h3>One maker from first sketch to support.</h3>
           <p>Design, code, release, and iteration stay connected.</p>
@@ -193,20 +175,21 @@
             <li>One digest a day, not a constant feed</li>
           </ul>
           <div class="action-row">
-            <a class="btn btn--primary" href="https://antecedent.kyralabs.dev/" target="_blank" rel="noopener">Visit Antecedent</a>
+            <a class="m3e-button" href="https://antecedent.kyralabs.dev/" target="_blank" rel="noopener">Visit Antecedent</a>
           </div>
-          <p class="repo-links">
+          <p class="chip-row">
             Open-source ·
-            <a href="https://github.com/kyra-labs/antecedent-web-app" target="_blank" rel="noopener">Web app</a>
-            <a href="https://github.com/kyra-labs/antecedent-pipeline" target="_blank" rel="noopener">Pipeline</a>
+            <a class="m3e-assist-chip" href="https://github.com/kyra-labs/antecedent-web-app" target="_blank" rel="noopener"><span class="m3e-assist-chip__label">Web app</span></a>
+            <a class="m3e-assist-chip" href="https://github.com/kyra-labs/antecedent-pipeline" target="_blank" rel="noopener"><span class="m3e-assist-chip__label">Pipeline</span></a>
           </p>
         </div>
 
-        <div class="trace proof-surface" aria-label="Example Antecedent story trace" data-reveal>
+        <div class="m3e-card m3e-card--elevated trace" role="group" aria-label="Example Antecedent story trace" data-reveal>
           <div class="trace-brand">
             <img class="trace-logo" src="/assets/img/antecedent_logo_long_400px.svg" alt="Antecedent" width="400" height="48" />
-            <span class="status-badge status-badge--live">Live</span>
+            <span class="status-badge">Live</span>
           </div>
+          <hr class="m3e-divider" />
           <ul class="trace-thread">
             <li class="trace-thread-item">
               <p class="trace-thread-date">Today</p>
@@ -233,31 +216,34 @@
             <li>Reminders for recurring bills</li>
           </ul>
           <div class="action-row">
-            <a class="btn btn--primary" href="https://spenzia.kyralabs.dev/">Visit Spenzia</a>
-            <a class="btn btn--quiet" href="https://spenzia.kyralabs.dev/#waitlist">Get notified</a>
+            <a class="m3e-button" href="https://spenzia.kyralabs.dev/">Visit Spenzia</a>
+            <a class="m3e-button m3e-button--outlined" href="https://spenzia.kyralabs.dev/#waitlist">Get notified</a>
           </div>
         </div>
 
-        <div class="ledger proof-surface" aria-label="Example Spenzia spending overview" data-reveal>
+        <div class="m3e-card m3e-card--elevated ledger" role="group" aria-label="Example Spenzia spending overview" data-reveal>
           <div class="ledger-summary">
             <div>
               <p>Spent this month</p>
               <strong>₹<span data-count="18240">18,240</span></strong>
             </div>
-            <div class="budget-ring" aria-label="62 percent of budget used">
-              <svg viewBox="0 0 52 52" role="img">
+            <div class="budget-ring">
+              <svg viewBox="0 0 52 52" role="img" aria-label="62 percent of budget used">
                 <circle class="ring-track" cx="26" cy="26" r="22" fill="none" stroke-width="4" />
-                <circle class="ring-value" cx="26" cy="26" r="22" fill="none" stroke-width="4" transform="rotate(-90 26 26)" />
+                <circle class="ring-value" cx="26" cy="26" r="22" fill="none" stroke-width="4" pathLength="100" stroke-dasharray="62 100" transform="rotate(-90 26 26)" />
               </svg>
-              <span><b data-count="62">62</b>%</span>
+              <span aria-hidden="true"><b data-count="62">62</b>%</span>
             </div>
           </div>
+          <hr class="m3e-divider" />
           <div class="ledger-row">
             <div><b>Groceries</b><span>Today · Food</span></div><strong>− ₹640</strong>
           </div>
+          <hr class="m3e-divider" />
           <div class="ledger-row">
             <div><b>Electricity bill</b><span>Due in 3 days · Recurring</span></div><strong>− ₹1,120</strong>
           </div>
+          <hr class="m3e-divider" />
           <div class="ledger-row">
             <div><b>Cab ride</b><span>Yesterday · Transport</span></div><strong>− ₹210</strong>
           </div>
@@ -272,11 +258,11 @@
           <h2>One developer. Every line of code.</h2>
           <p>Mohammed Thalha is the founder of Kyra Labs — a .NET, React, Kotlin, and Rust developer building small, focused, cross-platform apps solo.</p>
           <div class="action-row">
-            <a class="btn btn--primary" href="https://yamtee.dev" target="_blank" rel="noopener">Personal site</a>
-            <a class="btn btn--quiet" href="mailto:contact@kyralabs.dev">Email</a>
+            <a class="m3e-button" href="https://yamtee.dev" target="_blank" rel="noopener">Personal site</a>
+            <a class="m3e-button m3e-button--outlined" href="mailto:contact@kyralabs.dev">Email</a>
           </div>
         </div>
-        <div class="maker-mark proof-surface" data-reveal>
+        <div class="m3e-card m3e-card--elevated maker-mark" data-reveal>
           <span aria-hidden="true">MT</span>
           <div>
             <p class="signal">Mohammed Thalha</p>
@@ -293,35 +279,18 @@
           <h2>Hear when the next useful thing ships.</h2>
           <p>One email when Spenzia — or whatever comes next — is ready. No newsletter spam. No lists sold on.</p>
         </div>
-        <div class="contact-action" data-reveal>
-          <form class="waitlist-form" data-waitlist-form novalidate>
-            <label for="home-email">Email address</label>
-            <div class="input-row">
-              <input id="home-email" name="email" type="email" placeholder="you@example.com" required autocomplete="email" aria-describedby="email-status" />
-              <button class="btn btn--primary" type="submit">Notify me</button>
-            </div>
-            <p class="form-status" id="email-status" data-form-status aria-live="polite">We’ll only write when something ships.</p>
-          </form>
-          <p class="contact-links">
+        <div class="m3e-card m3e-card--elevated contact-action" data-reveal>
+          <WaitlistForm client:only="react">
+            <WaitlistFallback slot="fallback" />
+          </WaitlistForm>
+          <p class="chip-row">
             Prefer a direct line?
-            <a href="mailto:contact@kyralabs.dev">Email</a>
-            <a href="https://www.instagram.com/kyra__labs/" target="_blank" rel="noopener">Instagram</a>
-            <a href="https://github.com/kyra-labs" target="_blank" rel="noopener">GitHub</a>
+            <a class="m3e-assist-chip" href="mailto:contact@kyralabs.dev"><span class="m3e-assist-chip__label">Email</span></a>
+            <a class="m3e-assist-chip" href="https://www.instagram.com/kyra__labs/" target="_blank" rel="noopener"><span class="m3e-assist-chip__label">Instagram</span></a>
+            <a class="m3e-assist-chip" href="https://github.com/kyra-labs" target="_blank" rel="noopener"><span class="m3e-assist-chip__label">GitHub</span></a>
           </p>
         </div>
       </div>
     </section>
   </main>
-
-  <footer class="site-footer">
-    <p class="footer-statement">Small software can still make a meaningful difference.</p>
-    <div class="footer-meta">
-      <a class="wordmark" href="#top"><img class="wordmark-logo" src="/assets/img/kyra-wordmark.png" alt="Kyra Labs" width="670" height="360" /></a>
-      <p>© 2026 Kyra Labs · Independent studio, not a registered company.</p>
-      <a href="/privacy.html">Privacy</a>
-    </div>
-  </footer>
-
-  <script src="/assets/js/app.js"></script>
-</body>
-</html>
+</Base>

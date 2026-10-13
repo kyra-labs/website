@@ -1,1 +1,6 @@
 .hallmark/
+node_modules/
+dist/
+.astro/
+.lighthouseci/
+client-js.txt
