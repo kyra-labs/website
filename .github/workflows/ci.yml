@@ -46,3 +46,5 @@ jobs:
             .lighthouseci
             client-js.txt
           if-no-files-found: ignore
+          # .lighthouseci/ is a dot-directory, which upload-artifact skips by default.
+          include-hidden-files: true
