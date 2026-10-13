@@ -1,0 +1,28 @@
+---
+// The navigation bar in the m3e-css contract (short-navigation-bar.css), shown until the island
+// hydrates and for visitors without JavaScript. Same DOM as m3e-react's <ShortNavigationBar>.
+import type { NavLink } from '../nav';
+
+interface Props {
+  items: readonly NavLink[];
+}
+
+const { items } = Astro.props;
+---
+
+<nav class="m3e-short-navigation-bar site-nav-bar" aria-label="Primary">
+  {
+    items.map((item) => (
+      <a class="m3e-navigation-item" href={item.href}>
+        <span class="m3e-navigation-item__content">
+          <span class="m3e-navigation-item__indicator" aria-hidden="true" />
+          <span class="m3e-navigation-item__state" aria-hidden="true" />
+          <span class="m3e-icon m3e-navigation-item__icon" aria-hidden="true">
+            {item.icon}
+          </span>
+          <span class="m3e-navigation-item__label">{item.label}</span>
+        </span>
+      </a>
+    ))
+  }
+</nav>

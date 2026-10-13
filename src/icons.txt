@@ -1,0 +1,6 @@
+# Material Symbols (Rounded, D12) used by the navigation island. `pnpm gen:icons` subsets these.
+info
+history
+account_balance_wallet
+code
+mail

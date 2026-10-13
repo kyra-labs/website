@@ -1,46 +1,25 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Privacy Policy — Kyra Labs</title>
-  <meta name="description" content="How Kyra Labs handles the information you share on kyralabs.dev." />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://kyralabs.dev/privacy.html" />
-  <meta name="theme-color" content="oklch(97% 0.012 35)" />
-  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <meta name="apple-mobile-web-app-title" content="Kyra Labs" />
-  <link rel="manifest" href="/site.webmanifest" />
-  <link rel="preload" href="/assets/fonts/GoogleSansRounded.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="/assets/css/style.css" />
-  <script>document.documentElement.classList.add("js");</script>
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
+---
+import Base from '../layouts/Base.astro';
+import { privacyNav } from '../nav';
+---
 
-  <header class="site-header">
-    <nav class="nav-pill" aria-label="Primary">
-      <a class="wordmark" href="/" aria-label="Kyra Labs home">
-        <img class="wordmark-logo" src="/assets/img/kyra-wordmark.png" alt="Kyra Labs" width="670" height="360" />
-      </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
-        <span class="visually-hidden">Toggle navigation</span>
-        <span></span><span></span>
-      </button>
-      <div class="nav-links" id="nav-links">
-        <a href="/#about">About</a>
-        <a href="/#spenzia">Spenzia</a>
-        <a href="/#developer">Developer</a>
-        <a class="btn btn--compact" href="/#contact">Say hello</a>
-      </div>
-    </nav>
-  </header>
+<Base
+  title="Privacy Policy — Kyra Labs"
+  nav={privacyNav}
+  homeHref="/"
+  footer={{
+    statement: 'Privacy should be the quiet default.',
+    link: { href: '/', label: 'Home' },
+  }}
+>
+  <Fragment slot="head">
+    <meta name="description" content="How Kyra Labs handles the information you share on kyralabs.dev." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://kyralabs.dev/privacy.html" />
+  </Fragment>
 
   <main id="main" class="legal-page">
-    <article class="legal" data-reveal>
+    <article class="m3e-card m3e-card--elevated legal" data-reveal>
       <header class="legal-header">
         <p class="signal">Legal</p>
         <h1>Privacy Policy</h1>
@@ -79,16 +58,4 @@
       <p>Kyra Labs is an independent studio run by one developer, not a registered company. For anything privacy-related, reach out at <a class="text-link" href="mailto:contact@kyralabs.dev">contact@kyralabs.dev</a>.</p>
     </article>
   </main>
-
-  <footer class="site-footer">
-    <p class="footer-statement">Privacy should be the quiet default.</p>
-    <div class="footer-meta">
-      <a class="wordmark" href="/"><img class="wordmark-logo" src="/assets/img/kyra-wordmark.png" alt="Kyra Labs" width="670" height="360" /></a>
-      <p>© 2026 Kyra Labs · Independent studio, not a registered company.</p>
-      <a href="/">Home</a>
-    </div>
-  </footer>
-
-  <script src="/assets/js/app.js"></script>
-</body>
-</html>
+</Base>

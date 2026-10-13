@@ -1,0 +1,10 @@
+engineStrict: true
+allowBuilds:
+  esbuild: true
+minimumReleaseAgeExclude:
+  - '@kyralabs/m3e-css@1.0.0'
+  - '@kyralabs/m3e-icons@1.0.0'
+  - '@kyralabs/m3e-motion@1.0.0'
+  - '@kyralabs/m3e-react@1.0.0'
+  - '@kyralabs/m3e-shapes@1.0.0'
+  - '@kyralabs/m3e-tokens@1.0.0'
