@@ -1,0 +1,9 @@
+# Netlify (current host): build the Astro site. File-based settings override the dashboard's,
+# which still publish the repository root (no index.html since the Astro migration).
+[build]
+  command = "pnpm build"
+  publish = "dist"
+
+[build.environment]
+  # Astro 7 needs Node >= 22.12; pnpm 12.11.2 comes from package.json "packageManager".
+  NODE_VERSION = "24"
