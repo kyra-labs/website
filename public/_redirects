@@ -1,0 +1,3 @@
+# "/" serves the home page. Cloudflare needs this with html_handling "none" (wrangler.jsonc);
+# on Netlify the rule is a no-op because /index.html exists.
+/ /index.html 200

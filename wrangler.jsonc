@@ -1,0 +1,16 @@
+// Cloudflare Workers static assets: deploys dist/ as-is, no Worker script, no SSR adapter.
+// Having this file also stops `wrangler deploy` from auto-configuring the project (which would
+// run `astro add cloudflare` and turn the static site into a server-rendered Worker).
+{
+  "name": "kyra-labs-website",
+  "compatibility_date": "2026-10-13",
+  "assets": {
+    "directory": "./dist",
+    // Serve files at their exact paths so /privacy.html stays the canonical URL (the default,
+    // auto-trailing-slash, 307-redirects it to /privacy). "/" is mapped by public/_redirects.
+    "html_handling": "none"
+  },
+  // Lets Workers Builds publish a Preview for non-production branches (`wrangler preview`).
+  // Empty: previews inherit the assets and settings above.
+  "previews": {}
+}
