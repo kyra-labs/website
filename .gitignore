@@ -4,3 +4,4 @@ dist/
 .astro/
 .lighthouseci/
 client-js.txt
+.wrangler/
