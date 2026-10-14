@@ -8,7 +8,7 @@ The Kyra Labs studio site: a static **Astro** site (`src/pages/index.astro`, `sr
 
 ## Commands
 
-pnpm 12.11.2 (`packageManager`), Node ≥ 22.12 (`.nvmrc` 24).
+pnpm 12.11.2 (`packageManager`), Node ≥ 22.12; `.nvmrc` is pinned to **24.21.0** (2026-10-15: on Node 24.22.0, Cloudflare Workers Builds' Corepack setup of pnpm 12 fails with "Cannot find module …/corepack/v1/pnpm/12.11.2/bin/pnpm.cjs" before install; 24.21.0 is the last version that built. Only bump it after a Workers build passes on the new version).
 
 - `pnpm dev`, `pnpm build` → `dist/`. Both run `pnpm gen` first: the theme from `src/brand.mjs` and the icon subset from `src/icons.txt`, into `src/styles/generated/` (git-ignored).
 - `pnpm lint:css` (stylelint, tokens only), `pnpm typecheck` (astro check), `pnpm check:js` (client-JS allowlist on `dist/`), `pnpm check:no-js` (every page with JavaScript off: all text visible; saves screenshots), `pnpm lighthouse` (accessibility and SEO must be 100, mobile + desktop; performance warns below 85).
