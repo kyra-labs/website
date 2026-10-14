@@ -1,10 +1,14 @@
-// Fails unless the only client JavaScript in dist/ belongs to the allowed islands (ROADMAP M4 DoD:
-// zero client JS except the LoadingIndicator and navigation islands, client:only="react").
+// Fails unless every piece of client JavaScript in dist/ is expected:
+// - the allowed islands (client:only="react") listed in ALLOWED_ISLANDS;
+// - Astro's island runtime (the client:only loader and the <astro-island> element);
+// - one progressive-enhancement module per page (src/scripts/enhance.ts: press ripple + html.js),
+//   inline or as a file, never in <head>, at most ENHANCEMENT_BUDGET gzip;
+// - JSON-LD data blocks.
+// It also fails on inline event handlers, javascript: URLs, any classic <script src>, any other
+// inline script, and any .js file in dist/ not reachable from an allowed entry.
 //
-// Per page: every <script> must be JSON-LD data or Astro's own island runtime (the client:only
-// loader and the <astro-island> element); no inline event handlers or javascript: URLs; every
-// <astro-island> must be client:only and on the allowlist. Across dist/: every .js file must be
-// reachable from an allowed island's component or renderer URL.
+// (2026-10-15: the owner replaced "zero client JS except islands" with "small, non-blocking
+// enhancement scripts are fine if content, SEO and performance can't suffer"; see CLAUDE.md.)
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative, resolve, posix } from 'node:path';
 import { gzipSync } from 'node:zlib';
@@ -16,6 +20,10 @@ const ALLOWED_ISLANDS = {
   WaitlistForm: 'LoadingIndicator (waitlist form)',
 };
 // Astro's island runtime, inlined once per page that has islands.
+// The enhancement module: carries the m3e ripple and sets html.js.
+const ENHANCEMENT_BUDGET = 4 * 1024;
+const isEnhancement = (code) =>
+  /classList\.add\(\s*[`'"]js[`'"]\s*\)/.test(code) && code.includes('--_m3e-ripple-');
 const RUNTIME_SIGNATURES = [
   { name: 'astro client:only loader', test: (s) => s.includes('astro:only') && s.length < 1024 },
   {
@@ -38,8 +46,17 @@ const entryUrls = new Set();
 const pageReports = [];
 
 for (const page of all.filter((f) => f.endsWith('.html'))) {
-  const report = { page: rel(page), jsonLd: 0, runtime: [], islands: [] };
+  const report = { page: rel(page), jsonLd: 0, runtime: [], islands: [], enhancement: [] };
   let script = null;
+  let inHead = false;
+  const checkEnhancement = (code, where) => {
+    const gz = gzipSync(code).length;
+    if (!isEnhancement(code)) return `${where} is not the enhancement module`;
+    if (report.enhancement.length > 0) return `${where}: more than one enhancement script`;
+    if (gz > ENHANCEMENT_BUDGET) return `${where}: ${kb(gz)} gzip, over the ${kb(ENHANCEMENT_BUDGET)} budget`;
+    report.enhancement.push(`${where}, ${kb(code.length)} (${kb(gz)} gzip)`);
+    return null;
+  };
   const parser = new Parser(
     {
       onopentag(name, attrs) {
@@ -47,7 +64,8 @@ for (const page of all.filter((f) => f.endsWith('.html'))) {
           if (/^on[a-z]+$/i.test(attr)) errors.push(`${report.page}: inline handler ${attr} on <${name}>`);
           if (/^\s*javascript:/i.test(value)) errors.push(`${report.page}: javascript: URL in ${attr}`);
         }
-        if (name === 'script') script = { attrs, text: '' };
+        if (name === 'head') inHead = true;
+        if (name === 'script') script = { attrs, text: '', inHead };
         if (name === 'astro-island') {
           const opts = JSON.parse(attrs.opts ?? '{}');
           const island = `${opts.name} (client:${attrs.client})`;
@@ -64,8 +82,10 @@ for (const page of all.filter((f) => f.endsWith('.html'))) {
         if (script) script.text += text;
       },
       onclosetag(name) {
+        if (name === 'head') inHead = false;
         if (name !== 'script' || !script) return;
         const { attrs, text } = script;
+        const head = script.inHead;
         script = null;
         if (attrs.type === 'application/ld+json') {
           try {
@@ -74,6 +94,24 @@ for (const page of all.filter((f) => f.endsWith('.html'))) {
           } catch {
             errors.push(`${report.page}: invalid JSON-LD`);
           }
+          return;
+        }
+        if (attrs.type === 'module') {
+          if (head) return void errors.push(`${report.page}: module script in <head>`);
+          if (attrs.src) {
+            let code = '';
+            try {
+              code = readFileSync(join(DIST, attrs.src.replace(/^\//, '')), 'utf8');
+            } catch {
+              return void errors.push(`${report.page}: missing ${attrs.src}`);
+            }
+            const problem = checkEnhancement(code, `module ${attrs.src}`);
+            if (problem) return void errors.push(`${report.page}: ${problem}`);
+            entryUrls.add(attrs.src);
+            return;
+          }
+          const problem = checkEnhancement(text, 'inline module');
+          if (problem) errors.push(`${report.page}: ${problem}`);
           return;
         }
         if (attrs.src) return void errors.push(`${report.page}: <script src="${attrs.src}">`);
@@ -118,9 +156,10 @@ for (const r of pageReports) {
   console.log(`${r.page}`);
   console.log(`  JSON-LD data blocks: ${r.jsonLd}`);
   console.log(`  Astro runtime:       ${r.runtime.join(', ') || 'none'}`);
+  console.log(`  Enhancement:         ${r.enhancement.join('; ') || 'none'}`);
   console.log(`  Islands:             ${r.islands.map((i) => `${i} → ${ALLOWED_ISLANDS[i.split(' ')[0]] ?? '?'}`).join('; ') || 'none'}`);
 }
-console.log('\nJS files (all reachable from allowed islands only):');
+console.log('\nJS files (all reachable from allowed entries only):');
 let raw = 0;
 let gz = 0;
 for (const file of jsFiles.sort()) {
@@ -135,4 +174,4 @@ if (errors.length > 0) {
   console.error(`\n✗ ${errors.length} problem(s):\n${errors.map((e) => `  - ${e}`).join('\n')}`);
   process.exit(1);
 }
-console.log('\n✓ No client JS outside the allowed islands.');
+console.log('\n✓ Only expected client JS: allowed islands, Astro runtime, the enhancement module.');

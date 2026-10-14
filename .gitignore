@@ -5,3 +5,4 @@ dist/
 .lighthouseci/
 client-js.txt
 .wrangler/
+no-js-screenshots/
