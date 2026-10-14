@@ -73,10 +73,17 @@
 
 @layer site {
   :root {
-    /* Page margin: M3 compact 16dp, medium and up 24dp, wider from expanded (see below). */
+    /*
+     * Pane hierarchy (as in Google's apps): the app bar, navigation and footer sit on the outer
+     * surface; each section is a pane on surface-container-low with large corners; cards inside
+     * a pane step up to surface-container-high.
+     * --_gutter: outer margin (M3 compact 16dp, medium 24dp, wider from expanded).
+     */
     --_gutter: var(--m3e-sys-space-200);
-    --_gutter-wide: var(--_gutter);
-    --_section-space: var(--m3e-sys-space-800);
+    --_pane-gap: var(--m3e-sys-space-150);
+    --_pane-padding: var(--m3e-sys-space-300);
+    --_pane-shape: var(--m3e-sys-shape-corner-extra-large);
+    --_section-space: var(--m3e-sys-space-600);
     --_card-padding: var(--m3e-sys-space-300);
 
     scroll-padding-block-start: var(--m3e-comp-app-bar-small-container-height);
@@ -189,19 +196,29 @@
 
   /* ---- Sections ---------------------------------------------------------------------------- */
 
-  .section-shell {
-    padding-block: var(--_section-space);
+  main {
+    display: grid;
+    gap: var(--_pane-gap);
     padding-inline: var(--_gutter);
   }
 
-  .section-shell--wide {
-    padding-inline: var(--_gutter-wide);
+  /* A pane: one page section on its own container surface. */
+  .section-shell,
+  .pane {
+    --m3e-comp-elevated-card-container-color: var(--m3e-sys-color-surface-container-high);
+
+    padding-block: var(--_section-space);
+    padding-inline: var(--_pane-padding);
+    border-radius: var(--_pane-shape);
+    background-color: var(--m3e-sys-color-surface-container-low);
   }
 
   .hero {
     display: grid;
     align-items: center;
-    min-block-size: calc(100svh - var(--m3e-comp-app-bar-small-container-height));
+    min-block-size: calc(
+      100svh - var(--m3e-comp-app-bar-small-container-height) - var(--_pane-gap)
+    );
   }
 
   .split {
@@ -239,8 +256,17 @@
     letter-spacing: var(--m3e-sys-typescale-display-medium-emphasized-tracking);
   }
 
-  h2,
+  /* Section titles use the headline styles; display is for the hero (and the closing line). */
+  h2 {
+    font-family: var(--m3e-sys-typescale-headline-medium-emphasized-font);
+    font-size: var(--m3e-sys-typescale-headline-medium-emphasized-size);
+    font-weight: var(--m3e-sys-typescale-headline-medium-emphasized-weight);
+    line-height: var(--m3e-sys-typescale-headline-medium-emphasized-line-height);
+    letter-spacing: var(--m3e-sys-typescale-headline-medium-emphasized-tracking);
+  }
+
   .footer-statement {
+    padding-block-start: var(--m3e-sys-space-800);
     font-family: var(--m3e-sys-typescale-display-small-emphasized-font);
     font-size: var(--m3e-sys-typescale-display-small-emphasized-size);
     font-weight: var(--m3e-sys-typescale-display-small-emphasized-weight);
@@ -362,19 +388,28 @@
   .ledger,
   .trace,
   .maker-mark,
-  .contact-action,
-  .legal {
+  .contact-action {
     padding: var(--_card-padding);
   }
 
+  /* Interactive card: the "Visit Spenzia" link (.card-link, the card action) covers the card. The
+     copy stays in normal flow so the action's stretched hit area resolves against the card. */
   .hero-proof {
     position: relative;
+    display: grid;
+    align-content: end;
     aspect-ratio: 4 / 5;
     overflow: clip;
   }
 
+  .hero-proof:has(.card-link:focus-visible) {
+    outline: var(--m3e-sys-state-focus-indicator-thickness) solid var(--m3e-sys-color-secondary);
+    outline-offset: var(--m3e-sys-state-focus-indicator-outer-offset);
+  }
+
   .orbit {
     position: absolute;
+    z-index: -1; /* under the copy, inside the card's own stacking context */
     inset-block-start: 6%;
     inset-inline-start: 14%;
     inline-size: 80%;
@@ -413,9 +448,6 @@
   }
 
   .proof-copy {
-    position: absolute;
-    inset-inline: var(--_card-padding);
-    inset-block-end: var(--_card-padding);
     display: grid;
     gap: var(--m3e-sys-space-100);
     justify-items: start;
@@ -483,8 +515,8 @@
     padding-block: var(--m3e-sys-space-50);
     padding-inline: var(--m3e-sys-space-150);
     border-radius: var(--m3e-sys-shape-corner-full);
-    background-color: var(--m3e-sys-color-tertiary-container);
-    color: var(--m3e-sys-color-on-tertiary-container);
+    background-color: var(--m3e-sys-color-secondary-container);
+    color: var(--m3e-sys-color-on-secondary-container);
     font-family: var(--m3e-sys-typescale-label-large-emphasized-font);
     font-size: var(--m3e-sys-typescale-label-large-emphasized-size);
     font-weight: var(--m3e-sys-typescale-label-large-emphasized-weight);
@@ -739,9 +771,6 @@
     padding-inline: var(--_gutter);
   }
 
-  .footer-statement {
-    padding-block-start: var(--m3e-sys-space-800);
-  }
 
   .footer-meta {
     display: grid;
@@ -756,10 +785,8 @@
   /* ---- Privacy page ------------------------------------------------------------------------ */
 
   .legal-page {
-    display: grid;
     grid-template-columns: minmax(0, 1fr);
-    padding-block: var(--m3e-sys-space-600) var(--_section-space);
-    padding-inline: var(--_gutter);
+    padding-block-end: var(--_pane-gap);
   }
 
   .legal-header {
@@ -811,6 +838,9 @@
   @media (width >= 600px) {
     :root {
       --_gutter: var(--m3e-sys-space-300);
+      --_pane-gap: var(--m3e-sys-space-200);
+      --_pane-padding: var(--m3e-sys-space-600);
+      --_section-space: var(--m3e-sys-space-800);
     }
 
     .input-row {
@@ -832,8 +862,10 @@
 
   @media (width >= 840px) {
     :root {
-      --_gutter: 5vw;
-      --_section-space: calc(var(--m3e-sys-space-900) + var(--m3e-sys-space-600));
+      --_gutter: var(--m3e-sys-space-300);
+      --_pane-padding: 6vw;
+      --_pane-shape: var(--m3e-sys-shape-corner-extra-large-increased);
+      --_section-space: calc(var(--m3e-sys-space-900) + var(--m3e-sys-space-400));
       --_card-padding: var(--m3e-sys-space-400);
     }
 
@@ -858,7 +890,14 @@
       letter-spacing: var(--m3e-sys-typescale-display-large-emphasized-tracking);
     }
 
-    h2,
+    h2 {
+      font-family: var(--m3e-sys-typescale-headline-large-emphasized-font);
+      font-size: var(--m3e-sys-typescale-headline-large-emphasized-size);
+      font-weight: var(--m3e-sys-typescale-headline-large-emphasized-weight);
+      line-height: var(--m3e-sys-typescale-headline-large-emphasized-line-height);
+      letter-spacing: var(--m3e-sys-typescale-headline-large-emphasized-tracking);
+    }
+
     .footer-statement {
       font-family: var(--m3e-sys-typescale-display-medium-emphasized-font);
       font-size: var(--m3e-sys-typescale-display-medium-emphasized-size);
@@ -894,7 +933,6 @@
 
     .legal-page {
       grid-template-columns: minmax(0, 1fr) minmax(0, 6fr) minmax(0, 1fr);
-      padding-block-start: var(--m3e-sys-space-900);
     }
 
     .legal {
@@ -904,8 +942,8 @@
 
   @media (width >= 1200px) {
     :root {
-      --_gutter: 10vw;
-      --_gutter-wide: 6vw;
+      --_gutter: 6vw;
+      --_pane-padding: 7vw;
     }
 
     .legal-page {
@@ -915,24 +953,49 @@
 
   @media (width >= 1600px) {
     :root {
-      --_gutter: 15vw;
-      --_gutter-wide: 10vw;
+      --_gutter: 12vw;
     }
   }
 
   /* ---- Motion ------------------------------------------------------------------------------ */
 
   /*
-   * Sections rise in as they scroll into view: CSS scroll-driven animations, no JavaScript.
-   * Browsers without animation-timeline, and reduced-motion users, get the static page.
+   * All motion uses the --m3e-sys-motion-* spring tokens and transform/opacity only (no layout
+   * shift), and none of it runs under prefers-reduced-motion.
+   *
+   * - Entrance on load: the hero copy and card rise into place, staggered. Transform only, so
+   *   nothing is ever hidden: no-JS visitors and crawlers get the same, complete page.
+   * - Scroll reveals (opacity + rise, CSS scroll-driven) only once src/scripts/enhance.ts has
+   *   marked the page with html.js, so without JavaScript every section is visible.
+   * - The interactive card (.hero-proof) lifts on hover; the library adds the elevation change
+   *   and the ripple.
    */
   @media (prefers-reduced-motion: no-preference) {
     html {
       scroll-behavior: smooth;
     }
 
+    .hero .split-copy > *,
+    .hero .hero-proof {
+      animation: site-enter var(--m3e-sys-motion-spring-expressive-fast-spatial-duration)
+        var(--m3e-sys-motion-spring-expressive-fast-spatial-easing) both;
+    }
+
+    .hero .split-copy > :nth-child(2) {
+      animation-delay: var(--m3e-sys-motion-duration-short1);
+    }
+
+    .hero .split-copy > :nth-child(3) {
+      animation-delay: var(--m3e-sys-motion-duration-short2);
+    }
+
+    .hero .split-copy > :nth-child(4),
+    .hero .hero-proof {
+      animation-delay: var(--m3e-sys-motion-duration-short3);
+    }
+
     @supports (animation-timeline: view()) {
-      [data-reveal] {
+      .js [data-reveal] {
         animation-name: site-reveal;
         animation-duration: auto;
         animation-timing-function: var(--m3e-sys-motion-easing-emphasized-decelerate);
@@ -940,6 +1003,26 @@
         animation-timeline: view();
         animation-range: entry 0% entry 60%;
       }
+    }
+
+    @media (hover: hover) {
+      .hero-proof {
+        transition:
+          box-shadow var(--m3e-comp-elevation-outgoing-duration-hovered)
+            var(--m3e-comp-elevation-outgoing-easing),
+          translate var(--m3e-sys-motion-spring-default-spatial-duration)
+            var(--m3e-sys-motion-spring-default-spatial-easing);
+      }
+
+      .hero-proof:hover {
+        translate: 0 calc(var(--m3e-sys-space-50) * -1);
+      }
+    }
+  }
+
+  @keyframes site-enter {
+    from {
+      translate: 0 var(--m3e-sys-space-300);
     }
   }
 
