@@ -31,7 +31,9 @@ jobs:
         run: |
           pnpm --silent check:js | tee client-js.txt
           { echo '### Client JS check'; echo '```'; cat client-js.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
-      - name: Lighthouse accessibility = 100 (both pages, mobile + desktop)
+      - name: Pages complete without JavaScript (all text visible, JS off)
+        run: pnpm check:no-js
+      - name: Lighthouse accessibility = 100 and SEO = 100 (both pages, mobile + desktop)
         run: pnpm lighthouse
       - name: Lighthouse scores
         if: always()
@@ -45,6 +47,7 @@ jobs:
             dist
             .lighthouseci
             client-js.txt
+            no-js-screenshots
           if-no-files-found: ignore
           # .lighthouseci/ is a dot-directory, which upload-artifact skips by default.
           include-hidden-files: true

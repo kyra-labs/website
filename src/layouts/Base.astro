@@ -97,5 +97,10 @@ const darkSurface = createTheme({ ...brand, mode: 'dark' }).tokens.dark?.surface
         <a class="footer-link" href={footer.link.href}>{footer.link.label}</a>
       </div>
     </footer>
+
+    <!-- Deferred module (bundled by Astro): ripple + html.js for the scroll reveals. -->
+    <script>
+      import '../scripts/enhance';
+    </script>
   </body>
 </html>
