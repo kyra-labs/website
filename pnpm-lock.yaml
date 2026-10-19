@@ -170,17 +170,17 @@ importers:
         specifier: 7.0.1
         version: 7.0.1(@types/node@26.6.5)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(yaml@2.9.1)
       '@kyralabs/m3e-css':
-        specifier: ^1.1.0
-        version: 1.1.0
+        specifier: ^1.7.0
+        version: 1.7.0
       '@kyralabs/m3e-elements':
-        specifier: ^1.1.0
-        version: 1.1.0
+        specifier: ^1.7.0
+        version: 1.7.0
       '@kyralabs/m3e-react':
-        specifier: ^1.1.0
-        version: 1.1.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        specifier: ^1.7.0
+        version: 1.7.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@kyralabs/m3e-tokens':
-        specifier: ^1.1.0
-        version: 1.1.0
+        specifier: ^1.7.0
+        version: 1.7.0
       astro:
         specifier: 7.3.8
         version: 7.3.8(@types/node@26.6.5)(yaml@2.9.1)
@@ -195,8 +195,8 @@ importers:
         specifier: 0.9.10
         version: 0.9.10(@emnapi/runtime@1.11.3)(prettier@3.9.10)(typescript@6.0.3)
       '@kyralabs/m3e-icons':
-        specifier: ^1.1.0
-        version: 1.1.0
+        specifier: ^1.7.0
+        version: 1.7.0
       '@lhci/cli':
         specifier: 0.15.1
         version: 0.15.1(supports-color@10.2.2)
@@ -719,30 +719,30 @@ packages:
   '@keyv/serialize@1.1.1':
     resolution: {integrity: sha512-dXn3FZhPv0US+7dtJsIi2R+c7qWYiReoEh5zUntWCf4oSpMNib8FDhSoed6m3QyZdx5hK7iLFkYk3rNxwt8vTA==}
 
-  '@kyralabs/m3e-css@1.1.0':
-    resolution: {integrity: sha512-qYJiefmmhhDjSyHfgZfe47Zc8i2gwhm1fYA+sbNp2xDsKybVkgNjTnAtE5f8pGnsusf+KdMsHEmn4muPjnF+9A==}
+  '@kyralabs/m3e-css@1.7.0':
+    resolution: {integrity: sha512-8m3YcTPO64DZoiAJc94xFTbd+hvC/B20BQMoBt2abwi2tEaiV5NzEKTmnGCKExTCn46vzlYe4kTfuzdCWVqXMQ==}
 
-  '@kyralabs/m3e-elements@1.1.0':
-    resolution: {integrity: sha512-1Si6iMyNcX7Hg44FlhSXQKOlUxkO520AKlJUUSFGWj05KfLqghoPec/VsNr6LK4adezQPwLF0yteI5vWqlH80A==}
+  '@kyralabs/m3e-elements@1.7.0':
+    resolution: {integrity: sha512-5+MYnhpmAn/2IaodyC8jSy+U3ww2jMqv5+ooikYF2c1IQ3z5iXrh2y4tSK9NNHszKxwIo89gImyrgAkjCUbIhg==}
 
-  '@kyralabs/m3e-icons@1.1.0':
-    resolution: {integrity: sha512-wAz0UIOSdG5iLgFQ5FUu56u+OPYMyGmvsh4iKPNEDXrzR6+twz8tsnKOSdd/NCfGleeySORRe/Hf36+lT7fJyw==}
+  '@kyralabs/m3e-icons@1.7.0':
+    resolution: {integrity: sha512-4zl61Bgsj/z5W1j7dswE+XTaYjdk/Ehe7MTL9ukPwsSLoQeZ5Jr6+0sNIBm6TIBI8jEvKi1j8hNvs5KGxS4vZA==}
     hasBin: true
 
-  '@kyralabs/m3e-motion@1.1.0':
-    resolution: {integrity: sha512-sqiou6m90lxu/1nAWQp2NuRC8zD+piWcFdmkPccdsig5S4wpsOQxkqzP9MxpxcNBi0nCQnOTOouCqWua0EWyDg==}
+  '@kyralabs/m3e-motion@1.7.0':
+    resolution: {integrity: sha512-cXfemcUyRggbzds5fqQ3c4ZFpxuCj/0gFZ13MylhKgj6pGUD+trknY6LJbMK6hdcT0ynfUmiYgMEFx7CTnF36A==}
 
-  '@kyralabs/m3e-react@1.1.0':
-    resolution: {integrity: sha512-l0w/HO11Sd8Inbzm9k929u0XruRBzBxV+ZiVVzw5x/NMDElxcRIP+XJBR4uIimmXBsMWXYPt9hDzOBfIJoyDpg==}
+  '@kyralabs/m3e-react@1.7.0':
+    resolution: {integrity: sha512-SUvujkmUcSlF1f//hiLUwP5343/d2g+iJ5eBKySm1zTUY/5ND7y4EaKKncCoMkIAxcQKFRdU+4GQiBh+uWuZuQ==}
     peerDependencies:
       react: ^18.3.0 || ^19.0.0
       react-dom: ^18.3.0 || ^19.0.0
 
-  '@kyralabs/m3e-shapes@1.1.0':
-    resolution: {integrity: sha512-3nzCjLVXphyROtrj5fvIU9M1Hvf2WxXeVSBFstKWK4kByhXIdvNsEtkuyVDps5Fuz3ICw6WyY3e+Xh98U9ot+w==}
+  '@kyralabs/m3e-shapes@1.7.0':
+    resolution: {integrity: sha512-V2pmIsjbw0kgRenrQYYI9GCBBJJCo4MN5mVB/r4Q1IjLX09zwyVqTzGc9cwfQQeVNP9eq5cSZjPqbk+kmwNOmA==}
 
-  '@kyralabs/m3e-tokens@1.1.0':
-    resolution: {integrity: sha512-V3oEgQzixh2hS/aAZvqDYGVBkjzN6q62PqUL3NSKzKh6HttXijV/3rNCX/W0+BFHKCEpdGnRBseuSR7JkEv+3w==}
+  '@kyralabs/m3e-tokens@1.7.0':
+    resolution: {integrity: sha512-3cvwN8BZqnr64sKVsECXVDC/qKEpIbkogC3JydQmcA3GOe4qQ5sisk9r6TIWEEm5T9m69ZuYE6UygvgydMeWqw==}
     hasBin: true
 
   '@lhci/cli@0.15.1':
@@ -3916,32 +3916,32 @@ snapshots:
 
   '@keyv/serialize@1.1.1': {}
 
-  '@kyralabs/m3e-css@1.1.0':
+  '@kyralabs/m3e-css@1.7.0':
     dependencies:
-      '@kyralabs/m3e-tokens': 1.1.0
+      '@kyralabs/m3e-tokens': 1.7.0
 
-  '@kyralabs/m3e-elements@1.1.0': {}
+  '@kyralabs/m3e-elements@1.7.0': {}
 
-  '@kyralabs/m3e-icons@1.1.0':
+  '@kyralabs/m3e-icons@1.7.0':
     dependencies:
-      '@kyralabs/m3e-tokens': 1.1.0
+      '@kyralabs/m3e-tokens': 1.7.0
       subset-font: 2.9.0
 
-  '@kyralabs/m3e-motion@1.1.0': {}
+  '@kyralabs/m3e-motion@1.7.0': {}
 
-  '@kyralabs/m3e-react@1.1.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
+  '@kyralabs/m3e-react@1.7.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
     dependencies:
-      '@kyralabs/m3e-motion': 1.1.0
-      '@kyralabs/m3e-shapes': 1.1.0
+      '@kyralabs/m3e-motion': 1.7.0
+      '@kyralabs/m3e-shapes': 1.7.0
       motion: 14.1.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       react: 19.3.0
       react-aria: 3.53.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       react-dom: 19.3.0(react@19.3.0)
       react-stately: 3.51.0(react@19.3.0)
 
-  '@kyralabs/m3e-shapes@1.1.0': {}
+  '@kyralabs/m3e-shapes@1.7.0': {}
 
-  '@kyralabs/m3e-tokens@1.1.0': {}
+  '@kyralabs/m3e-tokens@1.7.0': {}
 
   '@lhci/cli@0.15.1(supports-color@10.2.2)':
     dependencies:

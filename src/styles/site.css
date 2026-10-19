@@ -1,9 +1,9 @@
 /*
- * kyralabs.dev on @kyralabs Material 3 Expressive (m3exp-web 1.0.0).
+ * kyralabs.dev on @kyralabs Material 3 Expressive (m3exp-web 1.7).
  *
  * Tokens only: every colour, size, duration, easing, radius and type value is a var(--m3e-…)
- * token; stylelint.config.js enforces the library's own rules here. Exceptions, both because
- * media queries can't read custom properties and m3e-tokens has no layout tokens yet:
+ * token; stylelint.config.js enforces the library's own rules here. Exceptions, because media
+ * queries can't read custom properties (--m3e-sys-window-*) and there are no margin tokens:
  *   - breakpoints are the M3 window size classes (compact < 600 ≤ medium < 840 ≤ expanded
  *     < 1200 ≤ large < 1600 ≤ extra-large);
  *   - page margins grow with the viewport (vw) above expanded instead of capping a max width.
@@ -15,7 +15,6 @@
 
 @import '@kyralabs/m3e-tokens/fonts.css';
 @import '@kyralabs/m3e-tokens/tokens.css';
-@import '@kyralabs/m3e-tokens/components/outlined-text-field.css';
 @import '@kyralabs/m3e-css/state-layer.css';
 @import '@kyralabs/m3e-css/focus-ring.css';
 @import '@kyralabs/m3e-css/icon.css';
@@ -26,6 +25,8 @@
 @import '@kyralabs/m3e-css/top-app-bar.css';
 @import '@kyralabs/m3e-css/short-navigation-bar.css';
 @import '@kyralabs/m3e-css/loading-indicator.css';
+@import '@kyralabs/m3e-css/text-field.css';
+@import '@kyralabs/m3e-css/snackbar.css';
 @import './generated/theme.css';
 @import './generated/icons.css';
 
@@ -109,8 +110,9 @@
     color: var(--m3e-sys-color-on-primary);
   }
 
-  /* Plain links and the form field; components bring their own focus ring (focus-ring.css). */
-  :where(a:not([class*='m3e-']), input):focus-visible {
+  /* Plain links; components bring their own focus ring (focus-ring.css) and the text field its
+     own focused outline. */
+  :where(a:not([class*='m3e-'])):focus-visible {
     outline: var(--m3e-sys-state-focus-indicator-thickness) solid var(--m3e-sys-color-secondary);
     outline-offset: var(--m3e-sys-state-focus-indicator-outer-offset);
   }
@@ -192,6 +194,13 @@
     z-index: 2;
     inset-inline: 0;
     inset-block-end: 0;
+  }
+
+  /* The waitlist result snackbar, above the navigation bar while the bar shows (below 840px). */
+  @media (width < 840px) {
+    .site-snackbars {
+      --m3e-comp-snackbar-host-bottom-offset: var(--m3e-comp-navigation-bar-container-height);
+    }
   }
 
   /* ---- Sections ---------------------------------------------------------------------------- */
@@ -311,7 +320,6 @@
   }
 
   .chip-row,
-  .form-status,
   .footer-meta,
   .ledger-summary p,
   .ledger-row span,
@@ -681,76 +689,18 @@
 
   .waitlist-form {
     display: grid;
-    gap: var(--m3e-sys-space-100);
   }
 
-  .waitlist-form label {
-    color: var(--m3e-sys-color-on-surface-variant);
-    font-family: var(--m3e-sys-typescale-label-large-font);
-    font-size: var(--m3e-sys-typescale-label-large-size);
-    font-weight: var(--m3e-sys-typescale-label-large-weight);
-    line-height: var(--m3e-sys-typescale-label-large-line-height);
-    letter-spacing: var(--m3e-sys-typescale-label-large-tracking);
-  }
-
+  /* The m3e outlined text field and the button share a row from medium up; the button lines up
+     with the field's container (both 56dp), the supporting text runs underneath. */
   .input-row {
     display: grid;
     gap: var(--m3e-sys-space-150);
-    align-items: center;
+    align-items: start;
   }
 
-  /* An outlined text field built from its component tokens (no text field in m3e-css yet). */
-  .input-row input {
-    inline-size: 100%;
-    min-block-size: var(--m3e-comp-outlined-text-field-container-height);
-    padding-inline: var(--m3e-sys-space-200);
-    border: var(--m3e-comp-outlined-text-field-outline-width) solid
-      var(--m3e-comp-outlined-text-field-outline-color);
-    border-radius: var(--m3e-comp-outlined-text-field-container-shape);
-    background-color: transparent;
-    color: var(--m3e-comp-outlined-text-field-input-color);
-    font-family: var(--m3e-comp-outlined-text-field-input-font);
-    font-size: var(--m3e-comp-outlined-text-field-input-size);
-    font-weight: var(--m3e-comp-outlined-text-field-input-weight);
-    line-height: var(--m3e-comp-outlined-text-field-input-line-height);
-    letter-spacing: var(--m3e-comp-outlined-text-field-input-tracking);
-    caret-color: var(--m3e-comp-outlined-text-field-caret-color);
-  }
-
-  .input-row input::placeholder {
-    color: var(--m3e-comp-outlined-text-field-input-placeholder-color);
-  }
-
-  .input-row input:hover {
-    border-color: var(--m3e-comp-outlined-text-field-outline-color-hover);
-  }
-
-  .input-row input:focus-visible {
-    border-color: var(--m3e-comp-outlined-text-field-outline-color-focus);
-    box-shadow: inset 0 0 0
-      calc(
-        var(--m3e-comp-outlined-text-field-outline-width-focus) -
-          var(--m3e-comp-outlined-text-field-outline-width)
-      )
-      var(--m3e-comp-outlined-text-field-outline-color-focus);
-    outline: none;
-  }
-
-  .input-row input[aria-invalid='true'] {
-    border-color: var(--m3e-comp-outlined-text-field-outline-color-error);
-    caret-color: var(--m3e-comp-outlined-text-field-caret-color-error-focus);
-  }
-
-  .form-status {
-    min-block-size: var(--m3e-sys-typescale-body-medium-line-height);
-  }
-
-  .waitlist-form[data-state='error'] .form-status {
-    color: var(--m3e-comp-outlined-text-field-supporting-color-error);
-  }
-
-  .waitlist-form[data-state='success'] .form-status {
-    color: var(--m3e-sys-color-primary);
+  .waitlist-field {
+    min-inline-size: 0;
   }
 
   /* The LoadingIndicator at the button's icon size, in the button's content colour. */

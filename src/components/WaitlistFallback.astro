@@ -1,23 +1,36 @@
 ---
-// The waitlist form as static HTML, shown until the WaitlistForm island hydrates. Submitting needs
-// the island, so the button stays disabled here (a no-JS submit would put the email in the URL).
+// The waitlist form as static HTML, shown until the WaitlistForm island hydrates: the same
+// m3e-css outlined text field DOM m3e-react's <TextField> renders (the label floats in CSS).
+// Submitting needs the island, so the button stays disabled here (a no-JS submit would put the
+// email in the URL).
 ---
 
 <form class="waitlist-form" data-state="idle" novalidate>
-  <label for="home-email">Email address</label>
   <div class="input-row">
-    <input
-      id="home-email"
-      name="email"
-      type="email"
-      placeholder="you@example.com"
-      required
-      autocomplete="email"
-      aria-describedby="email-status"
-    />
+    <div class="m3e-text-field m3e-text-field--outlined waitlist-field">
+      <div class="m3e-text-field__container">
+        <label class="m3e-text-field__label" for="home-email">Email address</label>
+        <input
+          class="m3e-text-field__input"
+          id="home-email"
+          name="email"
+          type="email"
+          inputmode="email"
+          placeholder="you@example.com"
+          required
+          autocomplete="email"
+          aria-describedby="home-email-supporting"
+        />
+        <fieldset class="m3e-text-field__outline" aria-hidden="true">
+          <legend class="m3e-text-field__notch"><span>Email address</span></legend>
+        </fieldset>
+      </div>
+      <div class="m3e-text-field__supporting">
+        <span class="m3e-text-field__supporting-text" id="home-email-supporting">
+          We’ll only write when something ships.
+        </span>
+      </div>
+    </div>
     <button class="m3e-button m3e-button--size-m" type="submit" disabled>Notify me</button>
   </div>
-  <p class="form-status" id="email-status" aria-live="polite">
-    We’ll only write when something ships.
-  </p>
 </form>
