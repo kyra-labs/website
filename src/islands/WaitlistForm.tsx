@@ -62,7 +62,8 @@ export default function WaitlistForm() {
       setState('success');
       setLabel('Added');
       form.reset();
-      void host.then((h) => h.showSnackbar(SUCCESS_STATUS));
+      // If the snackbar chunk can't load (offline, a stale tab after a deploy), "Added" remains.
+      host.then((h) => h.showSnackbar(SUCCESS_STATUS)).catch(() => undefined);
     }, requestDuration());
   };
 
