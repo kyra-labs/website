@@ -1,0 +1,22 @@
+---
+// One of Material 3 Expressive's 35 shapes (Compose MaterialShapes, ported by @kyralabs/m3e-shapes),
+// rendered to a static SVG path at build time: no client JavaScript. Decorative only, so it is
+// hidden from assistive technology; size, colour (fill: currentColor) and motion come from CSS.
+import { type MaterialShapeName, materialShape, polygonToPath, toSvgPathData } from '@kyralabs/m3e-shapes';
+
+interface Props {
+  name: MaterialShapeName;
+  class?: string;
+}
+
+const { name, class: className } = Astro.props;
+// The path is in a 0–1 box: three decimals (a thousandth of the shape's size) are plenty and keep
+// the inlined markup small.
+const d = toSvgPathData(polygonToPath(materialShape(name))).replace(/\d*\.\d+/g, (n) =>
+  String(Math.round(Number(n) * 1000) / 1000),
+);
+---
+
+<svg class:list={['shape', className]} viewBox="0 0 1 1" aria-hidden="true" focusable="false">
+  <path d={d} fill="currentColor"></path>
+</svg>
