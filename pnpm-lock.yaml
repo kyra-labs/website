@@ -197,6 +197,9 @@ importers:
       '@kyralabs/m3e-icons':
         specifier: ^1.7.0
         version: 1.7.0
+      '@kyralabs/m3e-shapes':
+        specifier: ^1.7.0
+        version: 1.7.0
       '@lhci/cli':
         specifier: 0.15.1
         version: 0.15.1(supports-color@10.2.2)

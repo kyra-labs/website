@@ -1,4 +1,5 @@
 ---
+import Shape from '../components/Shape.astro';
 import WaitlistFallback from '../components/WaitlistFallback.astro';
 import WaitlistForm from '../islands/WaitlistForm';
 import Base from '../layouts/Base.astro';
@@ -94,43 +95,41 @@ import { homeNav } from '../nav';
   </Fragment>
 
   <main id="main">
-    <section class="hero section-shell" id="top">
-      <div class="split split--hero">
-        <div class="split-copy hero-copy">
-          <p class="signal">Independent app studio</p>
-          <h1>Apps for real life.</h1>
-          <p class="lede">Kyra Labs designs and builds practical software for the things people actually deal with every day. Small in scope. Clear in purpose. Built by one developer.</p>
-          <div class="action-row">
-            <a class="m3e-button m3e-button--size-m" href="#spenzia">See what’s next</a>
-            <a class="m3e-button m3e-button--outlined m3e-button--size-m" href="#about">Meet the studio</a>
-          </div>
+    <!-- Hero: a text pane and an expressive art pane (m3.material.io's two-pane hero). -->
+    <section class="duo hero" id="top">
+      <div class="pane pane--text hero-copy">
+        <p class="signal">Independent app studio</p>
+        <h1>Apps for real life.</h1>
+        <p class="lede">Kyra Labs designs and builds practical software for the things people actually deal with every day. Small in scope. Clear in purpose. Built by one developer.</p>
+        <div class="action-row">
+          <a class="m3e-button m3e-button--size-m" href="#spenzia">See what’s next</a>
+          <a class="m3e-button m3e-button--tonal m3e-button--size-m" href="#about">Meet the studio</a>
         </div>
+      </div>
 
-        <aside class="m3e-card m3e-card--elevated m3e-card--interactive hero-proof" aria-label="Current project">
-          <div class="orbit" aria-hidden="true">
-            <span class="orbit-core"></span>
-            <span class="orbit-line orbit-line--one"></span>
-            <span class="orbit-line orbit-line--two"></span>
-          </div>
-          <div class="proof-copy">
-            <p class="signal">In the workshop</p>
-            <h2>Spenzia</h2>
-            <p>A focused expense tracker that keeps the month understandable.</p>
-            <a class="text-link card-link m3e-card__action" href="https://spenzia.kyralabs.dev/">Visit Spenzia <span aria-hidden="true">↗</span></a>
-          </div>
+      <div class="pane pane--art art--primary hero-art">
+        <Shape name="Cookie12Sided" class="art-shape art-shape--a" />
+        <Shape name="Clover4Leaf" class="art-shape art-shape--b" />
+        <Shape name="Pill" class="art-shape art-shape--c" />
+        <Shape name="SoftBurst" class="art-shape art-shape--d" />
+        <aside class="m3e-card m3e-card--filled m3e-card--interactive art-card hero-proof" aria-label="Current project">
+          <p class="signal">In the workshop</p>
+          <h2>Spenzia</h2>
+          <p>A focused expense tracker that keeps the month understandable.</p>
+          <a class="text-link card-link m3e-card__action" href="https://spenzia.kyralabs.dev/">Visit Spenzia <span aria-hidden="true">↗</span></a>
         </aside>
       </div>
     </section>
 
-    <section class="section-shell" id="about">
-      <div class="split">
-        <div class="split-copy" data-reveal>
+    <section class="block" id="about" data-reveal>
+      <div class="block__split">
+        <div class="block__copy">
           <p class="signal">The studio</p>
           <h2>Software meant to be used, not just installed.</h2>
           <p>Kyra Labs is an independent app studio — not a registered company, but a personal brand under which apps are designed, built, shipped, and supported end to end by a single developer.</p>
           <p>The focus stays narrow on purpose: everyday tools that solve one real problem well, without the ads, dark patterns, or bloat that follow most “productivity” apps.</p>
         </div>
-        <ul class="m3e-card m3e-card--elevated fact-list" data-reveal>
+        <ul class="seg-list fact-list">
           <li><span>01</span><p>Remote-first and built solo.</p></li>
           <li><span>02</span><p>Cross-platform: web, Android, iOS, Linux, and Windows.</p></li>
           <li><span>03</span><p>Every app designed, coded, and shipped by one developer.</p></li>
@@ -139,23 +138,26 @@ import { homeNav } from '../nav';
       </div>
     </section>
 
-    <section class="section-shell section-shell--wide" aria-labelledby="principles-heading">
-      <div class="section-intro" data-reveal>
+    <section class="block" aria-labelledby="principles-heading" data-reveal>
+      <div class="block__head">
         <p class="signal">How Kyra Labs works</p>
         <h2 id="principles-heading">Three rules the studio doesn’t break.</h2>
       </div>
-      <div class="principles" data-reveal>
-        <article class="m3e-card m3e-card--outlined">
+      <div class="principles">
+        <article class="principle">
+          <Shape name="Sunny" class="principle__shape" />
           <span aria-hidden="true">Daily</span>
           <h3>Built to earn a place in your routine.</h3>
           <p>Every feature has to justify the screen space it takes.</p>
         </article>
-        <article class="m3e-card m3e-card--filled">
+        <article class="principle principle--accent">
+          <Shape name="Gem" class="principle__shape" />
           <span aria-hidden="true">Private</span>
           <h3>Your data stays yours by default.</h3>
           <p>No selling attention, no dark patterns, no tracking you didn’t ask for.</p>
         </article>
-        <article class="m3e-card m3e-card--outlined">
+        <article class="principle">
+          <Shape name="Clover8Leaf" class="principle__shape" />
           <span aria-hidden="true">End to end</span>
           <h3>One maker from first sketch to support.</h3>
           <p>Design, code, release, and iteration stay connected.</p>
@@ -163,33 +165,35 @@ import { homeNav } from '../nav';
       </div>
     </section>
 
-    <section class="section-shell" id="antecedent">
-      <div class="split">
-        <div class="split-copy" data-reveal>
-          <p class="signal">Live now</p>
-          <h2>News that remembers what came before.</h2>
-          <p>Most news apps hand you a headline and move on. Antecedent tracks companies, people, and technologies as entities over time, then connects today’s story back to the earlier decisions that explain why it’s happening now.</p>
-          <ul class="feature-list">
-            <li>Entities tracked over time, not just one-off headlines</li>
-            <li>Every story linked back to the history behind it</li>
-            <li>One digest a day, not a constant feed</li>
-          </ul>
-          <div class="action-row">
-            <a class="m3e-button" href="https://antecedent.kyralabs.dev/" target="_blank" rel="noopener">Visit Antecedent</a>
-          </div>
-          <p class="chip-row">
-            Open-source ·
-            <a class="m3e-assist-chip" href="https://github.com/kyra-labs/antecedent-web-app" target="_blank" rel="noopener"><span class="m3e-assist-chip__label">Web app</span></a>
-            <a class="m3e-assist-chip" href="https://github.com/kyra-labs/antecedent-pipeline" target="_blank" rel="noopener"><span class="m3e-assist-chip__label">Pipeline</span></a>
-          </p>
+    <section class="duo" id="antecedent" data-reveal>
+      <div class="pane pane--text">
+        <p class="signal">Live now</p>
+        <h2>News that remembers what came before.</h2>
+        <p>Most news apps hand you a headline and move on. Antecedent tracks companies, people, and technologies as entities over time, then connects today’s story back to the earlier decisions that explain why it’s happening now.</p>
+        <ul class="feature-list">
+          <li><span class="m3e-icon feature-icon" aria-hidden="true">timeline</span>Entities tracked over time, not just one-off headlines</li>
+          <li><span class="m3e-icon feature-icon" aria-hidden="true">link</span>Every story linked back to the history behind it</li>
+          <li><span class="m3e-icon feature-icon" aria-hidden="true">today</span>One digest a day, not a constant feed</li>
+        </ul>
+        <div class="action-row">
+          <a class="m3e-button" href="https://antecedent.kyralabs.dev/" target="_blank" rel="noopener">Visit Antecedent</a>
         </div>
+        <p class="chip-row">
+          Open-source ·
+          <a class="m3e-assist-chip" href="https://github.com/kyra-labs/antecedent-web-app" target="_blank" rel="noopener"><span class="m3e-assist-chip__label">Web app</span></a>
+          <a class="m3e-assist-chip" href="https://github.com/kyra-labs/antecedent-pipeline" target="_blank" rel="noopener"><span class="m3e-assist-chip__label">Pipeline</span></a>
+        </p>
+      </div>
 
-        <div class="m3e-card m3e-card--elevated trace" role="group" aria-label="Example Antecedent story trace" data-reveal>
+      <div class="pane pane--art art--secondary">
+        <Shape name="Flower" class="art-shape art-shape--a" />
+        <Shape name="Pill" class="art-shape art-shape--b" />
+        <Shape name="Cookie6Sided" class="art-shape art-shape--c" />
+        <div class="m3e-card m3e-card--filled art-card trace" role="group" aria-label="Example Antecedent story trace">
           <div class="trace-brand">
             <img class="trace-logo" src="/assets/img/antecedent_logo_long_400px.svg" alt="Antecedent" width="400" height="48" />
             <span class="status-badge">Live</span>
           </div>
-          <hr class="m3e-divider" />
           <ul class="trace-thread">
             <li class="trace-thread-item">
               <p class="trace-thread-date">Today</p>
@@ -204,24 +208,27 @@ import { homeNav } from '../nav';
       </div>
     </section>
 
-    <section class="section-shell" id="spenzia">
-      <div class="split split--reverse">
-        <div class="split-copy" data-reveal>
-          <p class="signal">In development</p>
-          <h2>An expense tracker that doesn’t feel like homework.</h2>
-          <p>Spenzia keeps spending organised by category and budget, shows where the month’s money actually went, and reminds you before a recurring bill sneaks up on you.</p>
-          <ul class="feature-list">
-            <li>Expense categories and monthly budgets</li>
-            <li>Charts and spending insights at a glance</li>
-            <li>Reminders for recurring bills</li>
-          </ul>
-          <div class="action-row">
-            <a class="m3e-button" href="https://spenzia.kyralabs.dev/">Visit Spenzia</a>
-            <a class="m3e-button m3e-button--outlined" href="https://spenzia.kyralabs.dev/#waitlist">Get notified</a>
-          </div>
+    <section class="duo duo--reverse" id="spenzia" data-reveal>
+      <div class="pane pane--text">
+        <p class="signal">In development</p>
+        <h2>An expense tracker that doesn’t feel like homework.</h2>
+        <p>Spenzia keeps spending organised by category and budget, shows where the month’s money actually went, and reminds you before a recurring bill sneaks up on you.</p>
+        <ul class="feature-list">
+          <li><span class="m3e-icon feature-icon" aria-hidden="true">category</span>Expense categories and monthly budgets</li>
+          <li><span class="m3e-icon feature-icon" aria-hidden="true">insights</span>Charts and spending insights at a glance</li>
+          <li><span class="m3e-icon feature-icon" aria-hidden="true">notifications</span>Reminders for recurring bills</li>
+        </ul>
+        <div class="action-row">
+          <a class="m3e-button" href="https://spenzia.kyralabs.dev/">Visit Spenzia</a>
+          <a class="m3e-button m3e-button--tonal" href="https://spenzia.kyralabs.dev/#waitlist">Get notified</a>
         </div>
+      </div>
 
-        <div class="m3e-card m3e-card--elevated ledger" role="group" aria-label="Example Spenzia spending overview" data-reveal>
+      <div class="pane pane--art art--tertiary">
+        <Shape name="Cookie9Sided" class="art-shape art-shape--a" />
+        <Shape name="Arch" class="art-shape art-shape--b" />
+        <Shape name="Sunny" class="art-shape art-shape--c" />
+        <div class="m3e-card m3e-card--filled art-card ledger" role="group" aria-label="Example Spenzia spending overview">
           <div class="ledger-summary">
             <div>
               <p>Spent this month</p>
@@ -235,61 +242,59 @@ import { homeNav } from '../nav';
               <span aria-hidden="true"><b data-count="62">62</b>%</span>
             </div>
           </div>
-          <hr class="m3e-divider" />
-          <div class="ledger-row">
-            <div><b>Groceries</b><span>Today · Food</span></div><strong>− ₹640</strong>
-          </div>
-          <hr class="m3e-divider" />
-          <div class="ledger-row">
-            <div><b>Electricity bill</b><span>Due in 3 days · Recurring</span></div><strong>− ₹1,120</strong>
-          </div>
-          <hr class="m3e-divider" />
-          <div class="ledger-row">
-            <div><b>Cab ride</b><span>Yesterday · Transport</span></div><strong>− ₹210</strong>
-          </div>
+          <ul class="seg-list ledger-list">
+            <li class="ledger-row">
+              <div><b>Groceries</b><span>Today · Food</span></div><strong>− ₹640</strong>
+            </li>
+            <li class="ledger-row">
+              <div><b>Electricity bill</b><span>Due in 3 days · Recurring</span></div><strong>− ₹1,120</strong>
+            </li>
+            <li class="ledger-row">
+              <div><b>Cab ride</b><span>Yesterday · Transport</span></div><strong>− ₹210</strong>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <section class="section-shell" id="developer">
-      <div class="split">
-        <div class="split-copy" data-reveal>
-          <p class="signal">The developer</p>
-          <h2>One developer. Every line of code.</h2>
-          <p>Mohammed Thalha is the founder of Kyra Labs — a .NET, React, Kotlin, and Rust developer building small, focused, cross-platform apps solo.</p>
-          <div class="action-row">
-            <a class="m3e-button" href="https://yamtee.dev" target="_blank" rel="noopener">Personal site</a>
-            <a class="m3e-button m3e-button--outlined" href="mailto:contact@kyralabs.dev">Email</a>
-          </div>
+    <section class="duo" id="developer" data-reveal>
+      <div class="pane pane--text">
+        <p class="signal">The developer</p>
+        <h2>One developer. Every line of code.</h2>
+        <p>Mohammed Thalha is the founder of Kyra Labs — a .NET, React, Kotlin, and Rust developer building small, focused, cross-platform apps solo.</p>
+        <div class="action-row">
+          <a class="m3e-button" href="https://yamtee.dev" target="_blank" rel="noopener">Personal site</a>
+          <a class="m3e-button m3e-button--tonal" href="mailto:contact@kyralabs.dev">Email</a>
         </div>
-        <div class="m3e-card m3e-card--elevated maker-mark" data-reveal>
+      </div>
+      <div class="pane pane--art art--neutral maker-mark">
+        <div class="maker-mark__badge">
+          <Shape name="Cookie9Sided" class="maker-mark__shape" />
           <span aria-hidden="true">MT</span>
-          <div>
-            <p class="signal">Mohammed Thalha</p>
-            <p>Design · Engineering · Release · Support</p>
-          </div>
+        </div>
+        <div>
+          <p class="signal">Mohammed Thalha</p>
+          <p>Design · Engineering · Release · Support</p>
         </div>
       </div>
     </section>
 
-    <section class="section-shell contact" id="contact">
-      <div class="split">
-        <div class="split-copy" data-reveal>
-          <p class="signal">Stay in the loop</p>
-          <h2>Hear when the next useful thing ships.</h2>
-          <p>One email when Spenzia — or whatever comes next — is ready. No newsletter spam. No lists sold on.</p>
-        </div>
-        <div class="m3e-card m3e-card--elevated contact-action" data-reveal>
-          <WaitlistForm client:only="react">
-            <WaitlistFallback slot="fallback" />
-          </WaitlistForm>
-          <p class="chip-row">
-            Prefer a direct line?
-            <a class="m3e-assist-chip" href="mailto:contact@kyralabs.dev"><span class="m3e-assist-chip__label">Email</span></a>
-            <a class="m3e-assist-chip" href="https://www.instagram.com/kyra__labs/" target="_blank" rel="noopener"><span class="m3e-assist-chip__label">Instagram</span></a>
-            <a class="m3e-assist-chip" href="https://github.com/kyra-labs" target="_blank" rel="noopener"><span class="m3e-assist-chip__label">GitHub</span></a>
-          </p>
-        </div>
+    <section class="duo contact" id="contact" data-reveal>
+      <div class="pane pane--text">
+        <p class="signal">Stay in the loop</p>
+        <h2>Hear when the next useful thing ships.</h2>
+        <p>One email when Spenzia — or whatever comes next — is ready. No newsletter spam. No lists sold on.</p>
+      </div>
+      <div class="pane pane--form contact-action">
+        <WaitlistForm client:only="react">
+          <WaitlistFallback slot="fallback" />
+        </WaitlistForm>
+        <p class="chip-row">
+          Prefer a direct line?
+          <a class="m3e-assist-chip" href="mailto:contact@kyralabs.dev"><span class="m3e-assist-chip__label">Email</span></a>
+          <a class="m3e-assist-chip" href="https://www.instagram.com/kyra__labs/" target="_blank" rel="noopener"><span class="m3e-assist-chip__label">Instagram</span></a>
+          <a class="m3e-assist-chip" href="https://github.com/kyra-labs" target="_blank" rel="noopener"><span class="m3e-assist-chip__label">GitHub</span></a>
+        </p>
       </div>
     </section>
   </main>
