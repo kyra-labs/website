@@ -16,18 +16,18 @@ import { homeNav } from '../nav';
   }}
 >
   <Fragment slot="head">
-    <meta name="description" content="Kyra Labs is an independent app studio building practical, privacy-conscious apps. Antecedent, a daily tech-history digest, is live now; Spenzia, an expense tracker, is in development." />
+    <meta name="description" content="Kyra Labs is an independent app studio. Antecedent, a tech-history digest, is live; Pingogram, a Telegram client for Android, is in early beta; Spenzia is in development." />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://kyralabs.dev/" />
   </Fragment>
   <Fragment slot="meta">
     <meta name="author" content="Kyra Labs" />
-    <meta name="keywords" content="Kyra Labs, Antecedent, tech news digest, entity tracking, daily digest app, cross-platform apps, indie app studio, independent developer, expense tracker app, Spenzia, everyday productivity apps" />
+    <meta name="keywords" content="Kyra Labs, Antecedent, tech news digest, entity tracking, daily digest app, cross-platform apps, indie app studio, independent developer, expense tracker app, Spenzia, everyday productivity apps, Pingogram, Telegram client for Android, M3 Expressive Web, Material 3 Expressive, design system" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Kyra Labs" />
     <meta property="og:title" content="Kyra Labs — Independent App Studio Building Everyday Apps" />
-    <meta property="og:description" content="A one-person studio building practical, privacy-conscious apps. Antecedent, a daily tech-history digest, is live now; Spenzia is in development." />
+    <meta property="og:description" content="A one-person studio building practical, privacy-conscious apps: Antecedent is live, Pingogram is in early beta, Spenzia is in development, and M3 Expressive Web is its open-source design library." />
     <meta property="og:url" content="https://kyralabs.dev/" />
     <meta property="og:image" content="https://kyralabs.dev/assets/img/og-image.png" />
     <meta property="og:image:width" content="1200" />
@@ -36,7 +36,7 @@ import { homeNav } from '../nav';
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Kyra Labs — Independent App Studio Building Everyday Apps" />
-    <meta name="twitter:description" content="A one-person studio building practical, privacy-conscious apps. Antecedent, a daily tech-history digest, is live now; Spenzia is in development." />
+    <meta name="twitter:description" content="A one-person studio building practical, privacy-conscious apps: Antecedent is live, Pingogram is in early beta, Spenzia is in development, and M3 Expressive Web is its open-source design library." />
     <meta name="twitter:image" content="https://kyralabs.dev/assets/img/og-image.png" />
   </Fragment>
   <Fragment slot="structured-data">
@@ -72,6 +72,44 @@ import { homeNav } from '../nav';
     "sameAs": [
       "https://github.com/kyra-labs/antecedent-web-app",
       "https://github.com/kyra-labs/antecedent-pipeline"
+    ]
+  }
+  </script>
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "@id": "https://kyralabs.dev/#pingogram",
+    "name": "Pingogram",
+    "url": "https://pingogram.kyralabs.dev/",
+    "description": "An open-source Telegram client for Android with Material 3 Expressive design, dynamic color and no analytics, ads or telemetry.",
+    "applicationCategory": "CommunicationApplication",
+    "operatingSystem": "Android 8.0 or later",
+    "image": "https://kyralabs.dev/assets/img/pingogram-banner-1200.webp",
+    "creator": { "@id": "https://kyralabs.dev/#organization" },
+    "publisher": { "@id": "https://kyralabs.dev/#organization" },
+    "sameAs": [
+      "https://github.com/kyra-labs/pingogram-android"
+    ]
+  }
+  </script>
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    "@id": "https://kyralabs.dev/#m3exp-web",
+    "name": "M3 Expressive Web",
+    "alternateName": "@kyralabs/m3exp-web",
+    "url": "https://m3e.kyralabs.dev/",
+    "description": "Material 3 Expressive for the web: design tokens, CSS components, custom elements and React components, faithful to Jetpack Compose Material3.",
+    "codeRepository": "https://github.com/kyra-labs/m3exp-web",
+    "programmingLanguage": ["TypeScript", "CSS"],
+    "license": "https://www.apache.org/licenses/LICENSE-2.0",
+    "image": "https://kyralabs.dev/assets/img/m3exp-web-banner-1280.webp",
+    "creator": { "@id": "https://kyralabs.dev/#organization" },
+    "publisher": { "@id": "https://kyralabs.dev/#organization" },
+    "sameAs": [
+      "https://www.npmjs.com/package/@kyralabs/m3exp-web"
     ]
   }
   </script>
@@ -254,6 +292,92 @@ import { homeNav } from '../nav';
             </li>
           </ul>
         </div>
+      </div>
+    </section>
+
+    <section class="duo" id="pingogram" data-reveal>
+      <div class="pane pane--text">
+        <picture class="product-logo">
+          <source srcset="/assets/img/pingogram-logo-dark.svg" media="(prefers-color-scheme: dark)" />
+          <img src="/assets/img/pingogram-logo.svg" alt="Pingogram" width="591" height="100" loading="lazy" decoding="async" />
+        </picture>
+        <p class="signal">Early beta · Android</p>
+        <h2>Telegram, the way a Google app would feel.</h2>
+        <p>Pingogram is an open-source Telegram client for Android, written from scratch in Kotlin and Jetpack Compose on top of TDLib, Telegram’s official client library. Sign in with your existing account and keep every chat: what changes is the interface.</p>
+        <ul class="feature-list">
+          <li><span class="m3e-icon feature-icon" aria-hidden="true">palette</span>Material 3 Expressive design, with dynamic colour from your wallpaper</li>
+          <li><span class="m3e-icon feature-icon" aria-hidden="true">devices</span>Layouts that adapt from phones to tablets and foldables</li>
+          <li><span class="m3e-icon feature-icon" aria-hidden="true">shield</span>No analytics, no ads, no telemetry</li>
+        </ul>
+        <div class="action-row">
+          <a class="m3e-button" href="https://pingogram.kyralabs.dev/" target="_blank" rel="noopener">Visit Pingogram</a>
+          <a class="m3e-button m3e-button--tonal" href="https://github.com/kyra-labs/pingogram-android/releases" target="_blank" rel="noopener">Download</a>
+        </div>
+        <p class="chip-row">
+          Open-source ·
+          <a class="m3e-assist-chip" href="https://github.com/kyra-labs/pingogram-android" target="_blank" rel="noopener"><span class="m3e-assist-chip__label">Android app</span></a>
+        </p>
+        <p class="fine-print">A third-party client, not affiliated with Telegram.</p>
+      </div>
+
+      <div class="pane pane--art art--neutral">
+        <Shape name="Cookie12Sided" class="art-shape art-shape--a" />
+        <Shape name="Clover4Leaf" class="art-shape art-shape--b" />
+        <Shape name="Pill" class="art-shape art-shape--c" />
+        <img
+          class="art-banner"
+          src="/assets/img/pingogram-banner-1200.webp"
+          srcset="/assets/img/pingogram-banner-640.webp 640w, /assets/img/pingogram-banner-1200.webp 1200w"
+          sizes="(width >= 840px) 50vw, 100vw"
+          alt="Pingogram banner: “Telegram, the way a Google app would feel”, beside the chat list on a phone"
+          width="1200"
+          height="630"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    </section>
+
+    <section class="duo duo--reverse" id="m3exp-web" data-reveal>
+      <div class="pane pane--text">
+        <p class="product-name">
+          <img src="/assets/img/m3exp-web-logo.png" alt="" width="96" height="96" loading="lazy" decoding="async" />
+          M3 Expressive Web
+        </p>
+        <p class="signal">Open source · npm</p>
+        <h2>Material 3 Expressive, built for the web.</h2>
+        <p>The studio’s design library: design tokens, framework-free CSS components, zero-dependency custom elements and React components, faithful to Jetpack Compose Material3. Every Kyra Labs site runs on it, this one included.</p>
+        <ul class="feature-list">
+          <li><span class="m3e-icon feature-icon" aria-hidden="true">layers</span>One token source for four layers: tokens, CSS, elements and React</li>
+          <li><span class="m3e-icon feature-icon" aria-hidden="true">code</span>Plain HTML and CSS, custom elements, or React: use the layer you need</li>
+          <li><span class="m3e-icon feature-icon" aria-hidden="true">category</span>Material shapes, spring motion and themes from one seed colour</li>
+        </ul>
+        <div class="action-row">
+          <a class="m3e-button" href="https://m3e.kyralabs.dev/" target="_blank" rel="noopener">Read the docs</a>
+          <a class="m3e-button m3e-button--tonal" href="https://m3epg.kyralabs.dev/" target="_blank" rel="noopener">Playground</a>
+        </div>
+        <p class="chip-row">
+          Apache 2.0 ·
+          <a class="m3e-assist-chip" href="https://github.com/kyra-labs/m3exp-web" target="_blank" rel="noopener"><span class="m3e-assist-chip__label">GitHub</span></a>
+          <a class="m3e-assist-chip" href="https://www.npmjs.com/package/@kyralabs/m3exp-web" target="_blank" rel="noopener"><span class="m3e-assist-chip__label">npm</span></a>
+        </p>
+      </div>
+
+      <div class="pane pane--art art--primary">
+        <Shape name="Flower" class="art-shape art-shape--a" />
+        <Shape name="Gem" class="art-shape art-shape--b" />
+        <Shape name="Sunny" class="art-shape art-shape--c" />
+        <img
+          class="art-banner"
+          src="/assets/img/m3exp-web-banner-1280.webp"
+          srcset="/assets/img/m3exp-web-banner-640.webp 640w, /assets/img/m3exp-web-banner-1280.webp 1280w"
+          sizes="(width >= 840px) 50vw, 100vw"
+          alt="M3 Expressive Web banner: tokens, CSS, elements and React, faithful to Compose Material3"
+          width="1280"
+          height="640"
+          loading="lazy"
+          decoding="async"
+        />
       </div>
     </section>
 

@@ -13,7 +13,8 @@ const MEDIUM = '(width >= 600px)';
 /**
  * Navigation bar island (client:only). Vertical items on compact windows, horizontal on medium.
  * On the home page the destination whose section sits under the top third of the viewport is
- * selected (scroll spy); elsewhere nothing is.
+ * selected (scroll spy); over a section the bar doesn't list (the hero, Pingogram, M3 Expressive
+ * Web) nothing is, and elsewhere nothing is either.
  */
 export default function SectionNav({ items }: Props) {
   const [isMedium, setIsMedium] = useState(() => window.matchMedia(MEDIUM).matches);
@@ -27,10 +28,11 @@ export default function SectionNav({ items }: Props) {
   }, []);
 
   useEffect(() => {
-    const sections = items
-      .filter((item) => item.href.startsWith('#'))
-      .map((item) => ({ key: item.key, el: document.getElementById(item.key) }))
-      .filter((s): s is { key: string; el: HTMLElement } => s.el !== null);
+    if (!items.some((item) => item.href.startsWith('#'))) return;
+    const listed = new Set(items.map((item) => item.key));
+    const sections = Array.from(document.querySelectorAll<HTMLElement>('main section[id]')).map(
+      (el) => ({ key: el.id, el }),
+    );
     if (sections.length === 0) return;
 
     let frame = 0;
@@ -44,7 +46,8 @@ export default function SectionNav({ items }: Props) {
       // At the bottom of the page the last section may never reach the line.
       const atEnd =
         window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 1;
-      setSelected(atEnd ? sections[sections.length - 1]!.key : current);
+      const key = atEnd ? sections[sections.length - 1]!.key : current;
+      setSelected(key !== null && listed.has(key) ? key : null);
     };
     const onScroll = () => {
       if (frame === 0) frame = window.requestAnimationFrame(update);
