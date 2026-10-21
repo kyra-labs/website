@@ -17,6 +17,8 @@ interface Props {
 }
 
 const { title, nav, homeHref, footer } = Astro.props;
+// The navigation bar (compact and medium) leaves out the destinations only the wide app bar has.
+const barItems = nav.filter((item) => !item.isWide);
 // Browser UI colour in dark mode: the generated dark surface (the light value is the site's
 // original theme-color, kept as is).
 const darkSurface = createTheme({ ...brand, mode: 'dark' }).tokens.dark?.surface;
@@ -64,6 +66,7 @@ const darkSurface = createTheme({ ...brand, mode: 'dark' }).tokens.dark?.surface
               class:list={[
                 'm3e-button',
                 item.isPrimary ? 'm3e-button--size-s' : 'm3e-button--text m3e-button--size-s',
+                item.isWide && 'site-bar__link--wide',
               ]}
               href={item.href}
             >
@@ -74,8 +77,8 @@ const darkSurface = createTheme({ ...brand, mode: 'dark' }).tokens.dark?.surface
       </nav>
     </header>
 
-    <SectionNav client:only="react" items={nav}>
-      <NavFallback slot="fallback" items={nav} />
+    <SectionNav client:only="react" items={barItems}>
+      <NavFallback slot="fallback" items={barItems} />
     </SectionNav>
 
     <slot />

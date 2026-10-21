@@ -171,6 +171,13 @@
     gap: var(--m3e-sys-space-50);
   }
 
+  /* Destinations only the large app bar has room for (isWide in src/nav.ts). */
+  @media (width < 1200px) {
+    .site-bar__link--wide {
+      display: none;
+    }
+  }
+
   /* The bar takes its on-scroll colour once the page scrolls, without JavaScript. */
   @supports (animation-timeline: scroll()) {
     .site-bar {
@@ -235,7 +242,7 @@
     background-color: var(--m3e-sys-color-surface-container-low);
   }
 
-  .pane--text > p:not(.signal, .chip-row, .lede) {
+  .pane--text > p:not(.signal, .chip-row, .lede, .product-name) {
     max-inline-size: var(--m3e-sys-window-width-medium);
     color: var(--m3e-sys-color-on-surface-variant);
   }
@@ -275,7 +282,18 @@
   }
 
   .art--neutral {
+    --_shape-a: var(--m3e-sys-color-surface-container-highest);
+    --_shape-b: var(--m3e-sys-color-secondary-container);
+    --_shape-c: var(--m3e-sys-color-primary-fixed-dim);
+
     background-color: var(--m3e-sys-color-surface-container-high);
+  }
+
+  /* A product banner in front of an art pane, in the place of a content card. */
+  .art-banner {
+    inline-size: 100%;
+    block-size: auto;
+    border-radius: var(--m3e-sys-shape-corner-extra-large);
   }
 
   .art-shape {
@@ -381,6 +399,28 @@
     letter-spacing: var(--m3e-sys-typescale-title-large-tracking);
   }
 
+  /* A product's own logo (Pingogram) or mark and name (M3 Expressive Web) above its label. */
+  .product-logo img {
+    inline-size: auto;
+    block-size: var(--m3e-sys-space-400);
+  }
+
+  .product-name {
+    display: inline-flex;
+    gap: var(--m3e-sys-space-150);
+    align-items: center;
+    font-family: var(--m3e-sys-typescale-title-large-emphasized-font);
+    font-size: var(--m3e-sys-typescale-title-large-emphasized-size);
+    font-weight: var(--m3e-sys-typescale-title-large-emphasized-weight);
+    line-height: var(--m3e-sys-typescale-title-large-emphasized-line-height);
+    letter-spacing: var(--m3e-sys-typescale-title-large-emphasized-tracking);
+  }
+
+  .product-name img {
+    inline-size: var(--m3e-sys-space-500);
+    block-size: var(--m3e-sys-space-500);
+  }
+
   /* The small label above a heading: quiet, so the headline carries the hierarchy. */
   .signal,
   .principle > span {
@@ -402,6 +442,7 @@
   }
 
   .chip-row,
+  .fine-print,
   .footer-meta,
   .ledger-summary p,
   .ledger-row span,

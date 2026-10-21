@@ -10,3 +10,7 @@ today
 category
 insights
 notifications
+palette
+devices
+shield
+layers
