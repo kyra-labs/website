@@ -1,6 +1,7 @@
 // Fails unless the built pages carry the search basics Google reads for the site name and the
 // result snippet (https://developers.google.com/search/docs/appearance/site-names):
-// - every page: one <title> of at most TITLE_MAX characters, one meta description of
+// - every built page (dist/*.html): indexable (no robots noindex), one <title> of at most
+//   TITLE_MAX characters, one meta description of
 //   DESCRIPTION_MIN–DESCRIPTION_MAX characters, one absolute https canonical pointing at the page
 //   itself, og:title equal to the <title>, og:site_name equal to SITE_NAME, and JSON-LD blocks that
 //   all parse (@graph is flattened);
@@ -10,7 +11,7 @@
 //
 // (2026-10-22: the home page's WebSite node was removed by accident in July 2026 and nothing
 // noticed for three months, while Google showed "kyralabs.dev" instead of "Kyra Labs".)
-import { readFileSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { Parser } from 'htmlparser2';
 
@@ -18,12 +19,15 @@ const DIST = resolve(process.argv[2] ?? 'dist');
 const ORIGIN = 'https://kyralabs.dev';
 const SITE_NAME = 'Kyra Labs';
 const ORGANIZATION_ID = 'https://kyralabs.dev/#organization';
-// Page file in dist/ → its public URL. index.html is the home page.
-const PAGES = {
-  'index.html': `${ORIGIN}/`,
-  'privacy.html': `${ORIGIN}/privacy.html`,
-};
 const HOME = 'index.html';
+// Every built page and its public URL: index.html is the home page, the others keep their .html
+// name (/privacy.html; html_handling "none" in wrangler.jsonc).
+const PAGES = Object.fromEntries(
+  readdirSync(DIST)
+    .filter((file) => file.endsWith('.html'))
+    .sort()
+    .map((file) => [file, file === HOME ? `${ORIGIN}/` : `${ORIGIN}/${file}`]),
+);
 const TITLE_MAX = 60;
 const DESCRIPTION_MIN = 50;
 const DESCRIPTION_MAX = 160;
@@ -33,14 +37,20 @@ const length = (text) => [...text].length;
 const types = (node) => [node['@type']].flat().filter(Boolean);
 
 const readHead = (html) => {
-  const head = { titles: [], descriptions: [], canonicals: [], meta: {}, jsonLd: [] };
+  const head = { titles: [], descriptions: [], canonicals: [], robots: [], meta: {}, jsonLd: [] };
   let capture = null;
+  // Titles, meta and links count only inside <head> (an inline <svg><title> in the body is not the
+  // page title); JSON-LD counts anywhere.
+  let inHead = false;
   const parser = new Parser(
     {
       onopentag(name, attrs) {
-        if (name === 'title') capture = { kind: 'title', text: '' };
+        if (name === 'head') inHead = true;
         if (name === 'script' && attrs.type === 'application/ld+json') capture = { kind: 'ld', text: '' };
+        if (!inHead) return;
+        if (name === 'title') capture = { kind: 'title', text: '' };
         if (name === 'meta' && attrs.name === 'description') head.descriptions.push(attrs.content ?? '');
+        if (name === 'meta' && attrs.name === 'robots') head.robots.push(attrs.content ?? '');
         if (name === 'meta' && attrs.property?.startsWith('og:')) {
           (head.meta[attrs.property] ??= []).push(attrs.content ?? '');
         }
@@ -50,6 +60,7 @@ const readHead = (html) => {
         if (capture) capture.text += text;
       },
       onclosetag(name) {
+        if (name === 'head') inHead = false;
         if (!capture) return;
         if (name === 'title' && capture.kind === 'title') head.titles.push(capture.text.trim());
         if (name === 'script' && capture.kind === 'ld') head.jsonLd.push(capture.text);
@@ -74,6 +85,8 @@ for (const [page, url] of Object.entries(PAGES)) {
   }
   const head = readHead(html);
   const report = { page, title: '', description: '', canonical: '', nodes: [] };
+
+  if (head.robots.some((content) => /\bnoindex\b/i.test(content))) fail('robots meta says noindex');
 
   if (head.titles.length !== 1) fail(`${head.titles.length} <title> elements, expected 1`);
   const title = (report.title = head.titles[0] ?? '');
