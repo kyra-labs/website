@@ -1,3 +1,7 @@
-# noindex on the Worker's workers.dev hosts only (production, previews, versions), never on kyralabs.dev. Keep it first: see CLAUDE.md, Hosting.
+# noindex on the Worker's own hosts only, never on kyralabs.dev: workers.dev (production, previews,
+# versions) and the preview aliases on preview.kyralabs.dev. Keep these rules first: see CLAUDE.md, Hosting.
 https://:version.:subdomain.workers.dev/*
+  X-Robots-Tag: noindex
+
+https://:alias.preview.kyralabs.dev/*
   X-Robots-Tag: noindex
