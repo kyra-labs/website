@@ -4,7 +4,7 @@ import { privacyNav } from '../nav';
 ---
 
 <Base
-  title="Privacy Policy — Kyra Labs"
+  title="Privacy policy · Kyra Labs"
   nav={privacyNav}
   homeHref="/"
   footer={{
@@ -14,8 +14,14 @@ import { privacyNav } from '../nav';
 >
   <Fragment slot="head">
     <meta name="description" content="How Kyra Labs handles the information you share on kyralabs.dev." />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="https://kyralabs.dev/privacy.html" />
+  </Fragment>
+  <Fragment slot="meta">
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Kyra Labs" />
+    <meta property="og:title" content="Privacy policy · Kyra Labs" />
+    <meta property="og:url" content="https://kyralabs.dev/privacy.html" />
   </Fragment>
 
   <main id="main" class="legal-page">

@@ -27,6 +27,8 @@ jobs:
         run: pnpm lint:css
       - run: pnpm typecheck
       - run: pnpm build
+      - name: Site name and search basics (WebSite JSON-LD, titles, descriptions, canonicals)
+        run: pnpm check:seo
       - name: No client JS outside the allowed islands
         run: |
           pnpm --silent check:js | tee client-js.txt

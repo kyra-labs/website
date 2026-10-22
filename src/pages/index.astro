@@ -7,7 +7,7 @@ import { homeNav } from '../nav';
 ---
 
 <Base
-  title="Kyra Labs — Independent App Studio Building Everyday Apps"
+  title="Kyra Labs: Independent app studio"
   nav={homeNav}
   homeHref="#top"
   footer={{
@@ -16,18 +16,18 @@ import { homeNav } from '../nav';
   }}
 >
   <Fragment slot="head">
-    <meta name="description" content="Kyra Labs is an independent app studio. Antecedent, a tech-history digest, is live; Pingogram, a Telegram client for Android, is in early beta; Spenzia is in development." />
-    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Kyra Labs is an independent app studio behind Antecedent, Pingogram (an open-source Telegram client for Android), M3 Expressive Web and Spenzia." />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="https://kyralabs.dev/" />
   </Fragment>
   <Fragment slot="meta">
     <meta name="author" content="Kyra Labs" />
-    <meta name="keywords" content="Kyra Labs, Antecedent, tech news digest, entity tracking, daily digest app, cross-platform apps, indie app studio, independent developer, expense tracker app, Spenzia, everyday productivity apps, Pingogram, Telegram client for Android, M3 Expressive Web, Material 3 Expressive, design system" />
+    <meta name="keywords" content="Kyra Labs, kyralabs, independent app studio, indie app studio, one-person app studio, Antecedent, tech news digest with history, Pingogram, open-source Telegram client for Android, Material You Telegram client, M3 Expressive Web, Material 3 Expressive web components, Material 3 Expressive React, Spenzia, expense tracker app, privacy-friendly apps, Mohammed Thalha, YamTee" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Kyra Labs" />
-    <meta property="og:title" content="Kyra Labs — Independent App Studio Building Everyday Apps" />
-    <meta property="og:description" content="A one-person studio building practical, privacy-conscious apps: Antecedent is live, Pingogram is in early beta, Spenzia is in development, and M3 Expressive Web is its open-source design library." />
+    <meta property="og:title" content="Kyra Labs: Independent app studio" />
+    <meta property="og:description" content="An independent, one-person app studio: Antecedent, Pingogram, M3 Expressive Web and Spenzia. Practical, privacy-conscious software for everyday life." />
     <meta property="og:url" content="https://kyralabs.dev/" />
     <meta property="og:image" content="https://kyralabs.dev/assets/img/og-image.png" />
     <meta property="og:image:width" content="1200" />
@@ -35,8 +35,8 @@ import { homeNav } from '../nav';
     <meta property="og:locale" content="en_IN" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Kyra Labs — Independent App Studio Building Everyday Apps" />
-    <meta name="twitter:description" content="A one-person studio building practical, privacy-conscious apps: Antecedent is live, Pingogram is in early beta, Spenzia is in development, and M3 Expressive Web is its open-source design library." />
+    <meta name="twitter:title" content="Kyra Labs: Independent app studio" />
+    <meta name="twitter:description" content="An independent, one-person app studio: Antecedent, Pingogram, M3 Expressive Web and Spenzia. Practical, privacy-conscious software for everyday life." />
     <meta name="twitter:image" content="https://kyralabs.dev/assets/img/og-image.png" />
   </Fragment>
   <Fragment slot="structured-data">
@@ -49,6 +49,7 @@ import { homeNav } from '../nav';
     "url": "https://kyralabs.dev/",
     "logo": "https://kyralabs.dev/web-app-manifest-512x512.png",
     "description": "Kyra Labs is an independent, one-person app studio building practical, privacy-conscious apps for everyday life.",
+    "email": "contact@kyralabs.dev",
     "founder": { "@id": "https://kyralabs.dev/#mohammed-thalha" },
     "sameAs": [
       "https://github.com/kyra-labs",
@@ -59,12 +60,24 @@ import { homeNav } from '../nav';
     <script type="application/ld+json" is:inline>
   {
     "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://kyralabs.dev/#website",
+    "name": "Kyra Labs",
+    "alternateName": ["kyralabs.dev"],
+    "url": "https://kyralabs.dev/",
+    "inLanguage": "en",
+    "publisher": { "@id": "https://kyralabs.dev/#organization" }
+  }
+  </script>
+    <script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
     "@type": "WebApplication",
     "@id": "https://kyralabs.dev/#antecedent",
     "name": "Antecedent",
     "url": "https://antecedent.kyralabs.dev/",
     "description": "A daily tech digest that tracks companies, people, and technologies as entities over time and connects today's story back to the earlier decisions that explain why it matters now.",
-    "applicationCategory": "News",
+    "applicationCategory": "ReferenceApplication",
     "operatingSystem": "Web",
     "image": "https://kyralabs.dev/assets/img/antecedent_logo_long_400px.png",
     "creator": { "@id": "https://kyralabs.dev/#organization" },
@@ -79,7 +92,7 @@ import { homeNav } from '../nav';
   {
     "@context": "https://schema.org",
     "@type": "MobileApplication",
-    "@id": "https://kyralabs.dev/#pingogram",
+    "@id": "https://pingogram.kyralabs.dev/#app",
     "name": "Pingogram",
     "url": "https://pingogram.kyralabs.dev/",
     "description": "An open-source Telegram client for Android with Material 3 Expressive design, dynamic color and no analytics, ads or telemetry.",
@@ -97,7 +110,7 @@ import { homeNav } from '../nav';
   {
     "@context": "https://schema.org",
     "@type": "SoftwareSourceCode",
-    "@id": "https://kyralabs.dev/#m3exp-web",
+    "@id": "https://m3e.kyralabs.dev/#library",
     "name": "M3 Expressive Web",
     "alternateName": "@kyralabs/m3exp-web",
     "url": "https://m3e.kyralabs.dev/",
@@ -120,13 +133,13 @@ import { homeNav } from '../nav';
     "@id": "https://kyralabs.dev/#mohammed-thalha",
     "name": "Mohammed Thalha",
     "alternateName": "YamTee",
-    "url": "https://yamtee.dev",
+    "url": "https://yamtee.dev/",
     "jobTitle": "Founder & Developer",
     "worksFor": { "@id": "https://kyralabs.dev/#organization" },
     "sameAs": [
-      "https://yamtee.dev",
-      "https://github.com/kyra-labs",
-      "https://www.instagram.com/kyra__labs/"
+      "https://yamtee.dev/",
+      "https://github.com/YamTee",
+      "https://www.linkedin.com/in/mohammed-thalha-39181722b"
     ]
   }
   </script>
@@ -136,7 +149,7 @@ import { homeNav } from '../nav';
     <!-- Hero: a text pane and an expressive art pane (m3.material.io's two-pane hero). -->
     <section class="duo hero" id="top">
       <div class="pane pane--text hero-copy">
-        <p class="signal">Independent app studio</p>
+        <p class="signal">Kyra Labs · Independent app studio</p>
         <h1>Apps for real life.</h1>
         <p class="lede">Kyra Labs designs and builds practical software for the things people actually deal with every day. Small in scope. Clear in purpose. Built by one developer.</p>
         <div class="action-row">

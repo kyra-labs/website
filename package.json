@@ -18,6 +18,7 @@
     "typecheck": "astro check",
     "lint:css": "stylelint \"src/**/*.css\"",
     "check:js": "node scripts/check-client-js.mjs",
+    "check:seo": "node scripts/check-seo.mjs",
     "lighthouse": "lhci autorun && lhci autorun --collect.settings.preset=desktop --upload.outputDir=./.lighthouseci/reports-desktop",
     "check:no-js": "node scripts/check-no-js.mjs dist no-js-screenshots"
   },
